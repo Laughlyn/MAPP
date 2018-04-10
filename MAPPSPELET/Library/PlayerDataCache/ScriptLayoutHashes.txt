@@ -1,6 +1,6 @@
-WindowsStandalone
+Android
 PlayerPath?
-C:/Users/laugh/Documents/MAPPSPELET/Blocks.exe
+C:/Users/laugh/Documents/GitHub/MAPP/MAPP/MAPPSPELET/Blocks.apk
 SceneListBegin?
 Assets/Scenes/PlayScene.unity
 SceneListEnd?
@@ -107,7 +107,6 @@ e9bdabf9265d758d56f01bb188916fa8 UnityEngine.Networking.dll:UnityEngine.Networki
 73843688b51256aed059f049c540bca8 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformChild
 528ea1fd7c01796fc60c4e2f172ea229 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformVisualizer
 9de3a22eca9aefadba2d10d5987cefe3 UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
-9d89b897b6c091f01feedfd619e23c43 Assembly-CSharp.dll:.ProjectileSpawner
 322cb40e1e282f28af980cbef7922a90 UnityEngine.Analytics.dll:UnityEngine.Analytics.AnalyticsEventTracker
 dc07d7ad69b399a46e92c483bf1c04ca UnityEngine.Analytics.dll:UnityEngine.Analytics.AnalyticsTracker
 bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.AudioSpatializerMicrosoft
@@ -115,8 +114,8 @@ bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.Audi
 463516d5b5fe8e67a0a24c48f2095b04 UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInputModule
 c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingCollider
 45f3431f0103c41611e8d4eec3d439df UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingRenderer
-dd5481137759597d614818793c90a7fe Assembly-CSharp.dll:.PlayerMovement
-05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.ProjectileMovement
+a25139a6616afe89b4fb8e73c5631ee3 Assembly-CSharp.dll:.PlayerMovement
+fb3c7cb1c231b07ad03b3eb70df1a153 Assembly-CSharp.dll:.GameController
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Advertisements.dll:UnityEngine.Advertisements.CallbackExecutor
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Advertisements.dll:UnityEngine.Advertisements.Editor.Placeholder
 fc1e0f4d8439d9928083474691511a13 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
@@ -151,5 +150,5 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.Spa
 45f3431f0103c41611e8d4eec3d439df UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingRenderer
 9de3a22eca9aefadba2d10d5987cefe3 UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
 9d89b897b6c091f01feedfd619e23c43 Assembly-CSharp.dll:.Player1Controller
-cac5e62c64bc02a8223e45b78da71b3c Assembly-CSharp.dll:.CubeMovement
+cac5e62c64bc02a8223e45b78da71b3c Assembly-CSharp.dll:.CubeController
 9d89b897b6c091f01feedfd619e23c43 Assembly-CSharp.dll:.Player2Controller
