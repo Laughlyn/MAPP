@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class CubeMovement : MonoBehaviour {
+public class CubeController: MonoBehaviour {
 
     public Material material;
     Material CubeMaterial;

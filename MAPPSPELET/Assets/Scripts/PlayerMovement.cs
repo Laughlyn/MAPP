@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    float direction = 1;
-    public float speed = 1;
+    float direction = 1f;
+    public float speed = 1f;
+    public float distance = 2.3f;
 
     // Use this for initialization
     void Start ()
@@ -17,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
 	void Update ()
     {
         
-        if (transform.position.x > 2.3 || transform.position.x < -2.3)
+        if (transform.position.x > distance || transform.position.x < -distance)
         {
             direction *= -1;
         }
