@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class CubeController: MonoBehaviour {
+public class CubeController: MonoBehaviour
+{
 
     public Material material;
+    public int hitLimit;
+    int hitCounter;
     Material CubeMaterial;
     Color CubeColor;
-   // Color ZeroColor = new Color(0,0,0);
+
 
 	// Use this for initialization
 	void Start () {
@@ -29,9 +32,24 @@ public class CubeController: MonoBehaviour {
     {
         if (collision.gameObject.tag == "Projectile")
         {
+            if(collision.contacts[0].normal.y > 0)
+            {
+                hitCounter++;
+            }
+            else
+            {
+                hitCounter--;
+            }
+            if(hitCounter > hitLimit)
+            {
+                GetComponent<Rigidbody>().velocity = new Vector3(0, 30);
+            }
+            if(hitCounter < -hitLimit)
+            {
+                GetComponent<Rigidbody>().velocity = new Vector3(0, -30);
+            }
             CubeMaterial.SetColor("_EmissionColor", new Color(1f, 1f, 1f));
             Debug.Log("Hit!");
-            Destroy(collision.gameObject);
         }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class Player2Controller : MonoBehaviour {
 
     public GameObject projectilePrefab;
@@ -30,12 +31,6 @@ public class Player2Controller : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            if (Input.mousePosition.y > 1000)
-            {
-                SpawnProjectile();
-            }
-        }
+      
     }
 }
