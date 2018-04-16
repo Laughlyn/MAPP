@@ -11,15 +11,16 @@ public class CubeController: MonoBehaviour
     int hitCounter;
     Material CubeMaterial;
     Color CubeColor;
-
+	public GameObject previousCube;
+	public GameObject nextCube;
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+	{
         CubeMaterial = GetComponent<Renderer>().material;
         CubeColor = new Color(Random.value, Random.value, Random.value);
         CubeMaterial.SetColor("_Color", CubeColor);
     }
-
 	
 	// Update is called once per frame
 	void Update ()
@@ -27,29 +28,48 @@ public class CubeController: MonoBehaviour
        CubeMaterial.SetColor("_EmissionColor", new Color(CubeMaterial.GetColor("_EmissionColor").r * 0.9f, CubeMaterial.GetColor("_EmissionColor").g * 0.9f, CubeMaterial.GetColor("_EmissionColor").b * 0.9f));
 	}
 
-
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Projectile")
         {
-            if(collision.contacts[0].normal.y > 0)
+            if(collision.relativeVelocity.y > 0)
             {
+                Debug.Log(collision.relativeVelocity);
                 hitCounter++;
             }
-            else
+            if(collision.relativeVelocity.y < 0)
             {
+                Debug.Log(collision.relativeVelocity);
                 hitCounter--;
             }
             if(hitCounter > hitLimit)
             {
-                GetComponent<Rigidbody>().velocity = new Vector3(0, 30);
+                GetComponent<Rigidbody>().velocity = new Vector3(0f, 30f);
+				Destroy(gameObject, 1.0f);
             }
             if(hitCounter < -hitLimit)
             {
-                GetComponent<Rigidbody>().velocity = new Vector3(0, -30);
+                //"Drop" the block
+                GetComponent<Rigidbody>().velocity = new Vector3(0f, -30f);
+
+                //Adjust the next block
+                nextCube.GetComponent<Transform>().Translate(-0.125f, 0f, 0f);
+                nextCube.GetComponent<Transform>().localScale = new Vector3(0.375f, 1f);
+                nextCube.GetComponent<CubeController>().hitCounter = 0;
+
+                //Adjust the previous block
+                previousCube.GetComponent<Transform>().Translate(0.125f, 0f, 0f);
+                previousCube.GetComponent<Transform>().localScale = new Vector3(-0.375f, 1f);
+                previousCube.GetComponent<CubeController>().hitCounter = 0;
+
+                //Unlink the dropped block
+                previousCube.GetComponent<CubeController>().nextCube = nextCube;
+                nextCube.GetComponent<CubeController>().previousCube = previousCube;
+
+                //Destroy the cube
+                Destroy(gameObject, 1.0f);
             }
             CubeMaterial.SetColor("_EmissionColor", new Color(1f, 1f, 1f));
-            Debug.Log("Hit!");
         }
     }
 }

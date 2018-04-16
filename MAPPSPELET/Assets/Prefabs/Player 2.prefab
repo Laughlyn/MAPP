@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 65539284416103572}
   - component: {fileID: 23902337439100716}
   - component: {fileID: 114906206200228408}
-  - component: {fileID: 114007638539461690}
+  - component: {fileID: 114184173286343718}
   m_Layer: 0
   m_Name: Player 2
   m_TagString: Player
@@ -169,7 +169,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114007638539461690
+--- !u!114 &114184173286343718
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -177,13 +177,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1489114978216200}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d303125f902fc2843b835da80058a28c, type: 3}
+  m_Script: {fileID: 11500000, guid: cec72dcc4b431ed4fab1053518d60238, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 1865427415213586, guid: e258502e34eb95c41843be3c753c6680,
     type: 2}
   bulletSpawn: {fileID: 4484243393951982}
-  speed: 5
+  projectileSpeed: 5
 --- !u!114 &114906206200228408
 MonoBehaviour:
   m_ObjectHideFlags: 1
