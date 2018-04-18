@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 [System.Serializable]
 public class GameController : MonoBehaviour
@@ -14,9 +13,6 @@ public class GameController : MonoBehaviour
     public PlayerController player1Controller;
     public PlayerController player2Controller;
 
-
-    public Slider healthSlider;
-    public int playerHealth = 3;
 
     // Use this for initialization
     void Start ()
@@ -69,7 +65,5 @@ public class GameController : MonoBehaviour
                 }
             }
 		}
-
-        healthSlider.value = playerHealth;
     }
 }
