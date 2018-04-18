@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 23522825050551968}
   - component: {fileID: 54833592257259596}
   - component: {fileID: 114428948705758480}
+  - component: {fileID: 65155102174520616}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Cube
@@ -39,7 +40,7 @@ Transform:
   m_GameObject: {fileID: 1971805043340964}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.25, y: 1, z: 0.2}
+  m_LocalScale: {x: 0.5, y: 1, z: 0.2}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -100,6 +101,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 122
   m_CollisionDetection: 0
+--- !u!65 &65155102174520616
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1971805043340964}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &65841579191519194
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -125,3 +138,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: 4e9525ff9d515e5499285f7231477500, type: 2}
   hitLimit: 2
+  previousCube: {fileID: 0}
+  nextCube: {fileID: 0}
+  speed: 3
