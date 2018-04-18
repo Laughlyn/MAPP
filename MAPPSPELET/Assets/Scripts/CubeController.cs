@@ -59,7 +59,7 @@ public class CubeController: MonoBehaviour
 
                 //Adjust the previous block
                 previousCube.GetComponent<Transform>().Translate(0.125f, 0f, 0f);
-                previousCube.GetComponent<Transform>().localScale = new Vector3(-0.375f, 1f);
+                previousCube.GetComponent<Transform>().localScale = new Vector3(0.375f, 1f);
                 previousCube.GetComponent<CubeController>().hitCounter = 0;
 
                 //Unlink the dropped block
