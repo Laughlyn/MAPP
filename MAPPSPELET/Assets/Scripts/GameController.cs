@@ -15,6 +15,9 @@ public class GameController : MonoBehaviour
     public PlayerController player1Controller;
     public PlayerController player2Controller;
 
+    public float bulletTimer1;
+    public float bulletTimer2;
+
 
     public Slider healthSlider;
     public int playerHealth = 3;
@@ -25,6 +28,9 @@ public class GameController : MonoBehaviour
 		GameObject cube = null;
 		GameObject previousCube = null;
         GameControllerInstance = this;
+
+        bulletTimer1 = 3.0f;
+        bulletTimer2 = 3.0f;
 		//Create a row of cubes
         for (int i = 0; i < numberOfCubes; i++)
         {
@@ -43,15 +49,21 @@ public class GameController : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
+        bulletTimer1 += Time.deltaTime;
+        bulletTimer2 += Time.deltaTime;
+
         if (Input.GetMouseButtonDown(0))
         {
-            if (Input.mousePosition.y < Screen.height / 2)
+            if (Input.mousePosition.y < Screen.height / 2 && bulletTimer1 > 1.0f)
             {
                 player1Controller.SpawnProjectile();
+                bulletTimer1 = 0;
             }
-            if (Input.mousePosition.y > Screen.height / 2)
+            if (Input.mousePosition.y > Screen.height / 2 && bulletTimer2 > 1.0f)
             { 
+                
                 player2Controller.SpawnProjectile();
+                bulletTimer2 = 0;
             }
         }
 
