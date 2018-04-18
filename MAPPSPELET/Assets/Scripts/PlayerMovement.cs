@@ -8,6 +8,9 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 1f;
     public float distance = 2.3f;
 
+    private float damageTimer;
+    public int health = 3;
+
     // Use this for initialization
     void Start ()
     {
@@ -23,5 +26,20 @@ public class PlayerMovement : MonoBehaviour
             direction *= -1;
         }
         transform.Translate(Time.deltaTime*direction*speed, 0, 0, Space.World);
+
+
+    }
+
+    public void Harm(int dmg)
+    {
+        if (damageTimer > 1.0f)
+        {
+            health -= dmg;
+            damageTimer = 0;
+            if(health < 1)
+            {
+                Debug.Log("DÖÖ");
+            }
+        }
     }
 }
