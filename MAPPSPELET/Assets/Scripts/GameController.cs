@@ -6,6 +6,7 @@ using UnityEngine.UI;
 [System.Serializable]
 public class GameController : MonoBehaviour
 {
+    public static GameController GameControllerInstance;
 
     public GameObject cubePrefab;
     public int numberOfCubes;
@@ -23,7 +24,7 @@ public class GameController : MonoBehaviour
 	{
 		GameObject cube = null;
 		GameObject previousCube = null;
-
+        GameControllerInstance = this;
 		//Create a row of cubes
         for (int i = 0; i < numberOfCubes; i++)
         {

@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
-		
+        health = 3;	
 	}
 	
 	// Update is called once per frame
@@ -27,6 +27,8 @@ public class PlayerMovement : MonoBehaviour
         }
         transform.Translate(Time.deltaTime*direction*speed, 0, 0, Space.World);
 
+        damageTimer += Time.deltaTime;
+        GameController.GameControllerInstance.playerHealth = health;
 
     }
 

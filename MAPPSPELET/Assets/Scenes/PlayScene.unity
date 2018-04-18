@@ -319,7 +319,7 @@ Transform:
   m_Children:
   - {fileID: 2076971410}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180.01}
 --- !u!114 &154066186
 MonoBehaviour:
@@ -528,7 +528,7 @@ Transform:
   - {fileID: 1375925868}
   - {fileID: 382350921}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &633144814 stripped
 Transform:
@@ -4374,7 +4374,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4907661093824426, guid: 99b0f4f905dacd8498dd71ed5631b1e4, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114606751553765280, guid: 99b0f4f905dacd8498dd71ed5631b1e4,
         type: 2}
@@ -4416,7 +4416,7 @@ Transform:
   - {fileID: 1054695082}
   - {fileID: 1396138594}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &980912103
 GameObject:
@@ -4687,7 +4687,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 42.864002, y: -21.577002, z: 17.708}
 --- !u!1001 &1090691582
 Prefab:
@@ -5123,7 +5123,7 @@ MonoBehaviour:
   spacing: 0.5
   player1Controller: {fileID: 1003204277}
   player2Controller: {fileID: 158614054}
-  healthSlider: {fileID: 0}
+  healthSlider: {fileID: 649492298}
   playerHealth: 3
 --- !u!4 &1381515062
 Transform:
@@ -5136,7 +5136,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1396138590
 GameObject:
