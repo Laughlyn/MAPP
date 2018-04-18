@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
     float direction = 1f;
     public float speed = 1f;
     public float distance = 2.3f;
-    bool goingLeft = true;
+    bool goingLeft = false;
 
     // Use this for initialization
     void Start ()
@@ -19,17 +19,20 @@ public class PlayerMovement : MonoBehaviour
 	void Update ()
     {
         //Change direction
-        if (transform.position.x > distance || transform.position.x < -distance)
+        if (transform.position.x > distance)
+        {
+            if (!goingLeft)
+            {
+                direction *= -1f;
+                goingLeft = true;
+            }
+        }
+        if(transform.position.x < -distance)
         {
             if (goingLeft)
             {
                 direction *= -1f;
                 goingLeft = false;
-            }
-            else
-            {
-                direction *= -1f;
-                goingLeft = true;
             }
         }
 
