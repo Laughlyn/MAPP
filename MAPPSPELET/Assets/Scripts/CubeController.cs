@@ -34,27 +34,31 @@ public class CubeController: MonoBehaviour
         {
             if(collision.relativeVelocity.y > 0)
             {
-                Debug.Log(collision.relativeVelocity);
                 hitCounter++;
                 transform.position = new Vector3(transform.position.x, transform.position.y + 1f);
             }
             if(collision.relativeVelocity.y < 0)
             {
-                Debug.Log(collision.relativeVelocity);
                 hitCounter--;
 
                 transform.position = new Vector3(transform.position.x, transform.position.y - 1f);
             }
-            Debug.Log(collision.relativeVelocity);
 
         }
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player1"))
         {
             other.GetComponent<PlayerMovement>().Harm(1);
-            Debug.Log("BBBBB");
+            Debug.Log("Träffa");
+            this.transform.position = new Vector3(transform.position.x, 0);
+        }
+        if (other.CompareTag("Player2"))
+        {
+            other.GetComponent<PlayerMovement>().Harm2(1);
+            Debug.Log("Träffa Player");
+            this.transform.position = new Vector3(transform.position.x, 0);
         }
     }
 }
