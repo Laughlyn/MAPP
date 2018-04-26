@@ -16,8 +16,10 @@ public class GameController : MonoBehaviour
     public PlayerController player1Controller;
     public PlayerController player2Controller;
 
-    public float bulletTimer1;
-    public float bulletTimer2;
+    float bulletTimer1;
+    float bulletTimer2;
+
+    public float bulletDelay = 0.3f;
 
     public GameObject heart1, heart2, heart3, heart4, heart5, heart6;
 
@@ -28,26 +30,15 @@ public class GameController : MonoBehaviour
     // Use this for initialization
     void Start ()
 	{
-        gameOver = false;
-		GameObject cube = null;
-		GameObject previousCube = null;
         GameControllerInstance = this;
-
+        gameOver = false;
         bulletTimer1 = 3.0f;
         bulletTimer2 = 3.0f;
-		//Create a row of cubes
-        for (int i = 0; i < numberOfCubes; i++)
-        {
-			previousCube = cube;
-    		cube = (GameObject)Instantiate(cubePrefab, new Vector3(firstCubePosition + (i * spacing), 0), new Quaternion());
-			cube.GetComponent<CubeController> ().previousCube = previousCube;
 
-			if (previousCube != null)
-			{
-				previousCube.GetComponent<CubeController> ().nextCube = cube;
-			}
+        //Create a row of cubes
 
-        }
+        CreateCubes();
+
         heart1.SetActive(true);
         heart2.SetActive(true);
         heart3.SetActive(true);
@@ -61,6 +52,12 @@ public class GameController : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
+        if(Input.GetKeyUp(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+        
+
         bulletTimer1 += Time.deltaTime;
         bulletTimer2 += Time.deltaTime;
 
@@ -68,12 +65,12 @@ public class GameController : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-                if (Input.mousePosition.y < Screen.height / 2 && bulletTimer1 > 1.0f)
+                if (Input.mousePosition.y < Screen.height / 2 && bulletTimer1 > bulletDelay)
                 {
                     player1Controller.SpawnProjectile();
                     bulletTimer1 = 0;
                 }
-                if (Input.mousePosition.y > Screen.height / 2 && bulletTimer2 > 1.0f)
+                if (Input.mousePosition.y > Screen.height / 2 && bulletTimer2 > bulletDelay)
                 {
 
                     player2Controller.SpawnProjectile();
@@ -86,13 +83,15 @@ public class GameController : MonoBehaviour
             {
                 for (int i = 0; i < Input.touchCount; i++)
                 {
-                    if (myTouches[i].position.y < Screen.height / 2)
+                    if (myTouches[i].position.y < Screen.height / 2 && bulletTimer1 > bulletDelay)
                     {
                         player1Controller.SpawnProjectile();
+                        bulletTimer1 = 0;
                     }
-                    if (myTouches[i].position.y > Screen.height / 2)
+                    if (myTouches[i].position.y > Screen.height / 2 && bulletTimer2 > bulletDelay)
                     {
                         player2Controller.SpawnProjectile();
+                        bulletTimer2 = 0;
                     }
                 }
             }
@@ -101,25 +100,13 @@ public class GameController : MonoBehaviour
 
     public void RestartGame()
     {
-        GameObject cube = null;
-        GameObject previousCube = null;
         GameControllerInstance = this;
 
         bulletTimer1 = 3.0f;
         bulletTimer2 = 3.0f;
-        //Create a row of cubes
-        for (int i = 0; i < numberOfCubes; i++)
-        {
-            previousCube = cube;
-            cube = (GameObject)Instantiate(cubePrefab, new Vector3(firstCubePosition + (i * spacing), 0), new Quaternion());
-            cube.GetComponent<CubeController>().previousCube = previousCube;
 
-            if (previousCube != null)
-            {
-                previousCube.GetComponent<CubeController>().nextCube = cube;
-            }
+        CreateCubes();
 
-        }
         heart1.SetActive(true);
         heart2.SetActive(true);
         heart3.SetActive(true);
@@ -133,5 +120,25 @@ public class GameController : MonoBehaviour
     public void BackToMenu()
     {
         SceneManager.LoadScene(0);
+    }
+
+    void CreateCubes()
+    {
+        GameObject cube = null;
+        GameObject previousCube = null;
+
+        //Create a row of cubes
+        for (int i = 0; i < numberOfCubes; i++)
+        {
+            previousCube = cube;
+            cube = (GameObject)Instantiate(cubePrefab, new Vector3(firstCubePosition + (i * spacing), 0), new Quaternion());
+            cube.GetComponent<CubeController>().previousCube = previousCube;
+
+            if (previousCube != null)
+            {
+                previousCube.GetComponent<CubeController>().nextCube = cube;
+            }
+
+        }
     }
 }

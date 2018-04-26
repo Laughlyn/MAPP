@@ -17,9 +17,9 @@ public class ProjectileController : MonoBehaviour
 		
 	}
 
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider other)
     {
-        if(collision.gameObject.tag == "Projectile")
+        if(other.gameObject.tag == "Projectile")
         {
             return;
         }

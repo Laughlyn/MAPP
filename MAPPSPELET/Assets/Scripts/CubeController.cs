@@ -25,29 +25,26 @@ public class CubeController: MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-       CubeMaterial.SetColor("_EmissionColor", new Color(CubeMaterial.GetColor("_EmissionColor").r * 0.9f, CubeMaterial.GetColor("_EmissionColor").g * 0.9f, CubeMaterial.GetColor("_EmissionColor").b * 0.9f));
+       //CubeMaterial.SetColor("_EmissionColor", new Color(CubeMaterial.GetColor("_EmissionColor").r * 0.9f, CubeMaterial.GetColor("_EmissionColor").g * 0.9f, CubeMaterial.GetColor("_EmissionColor").b * 0.9f));
 	}
 
-    public void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if(collision.gameObject.tag == "Projectile")
+        if (other.gameObject.tag == "Projectile")
         {
-            if(collision.relativeVelocity.y > 0)
+            if (other.GetComponent<Rigidbody>().velocity.y > 0)
             {
                 hitCounter++;
                 transform.position = new Vector3(transform.position.x, transform.position.y + 1f);
             }
-            if(collision.relativeVelocity.y < 0)
+            if (other.GetComponent<Rigidbody>().velocity.y < 0)
             {
                 hitCounter--;
-
                 transform.position = new Vector3(transform.position.x, transform.position.y - 1f);
             }
-
+            Destroy(other.gameObject);
         }
-    }
-    private void OnTriggerEnter(Collider other)
-    {
+
         if (other.CompareTag("Player1"))
         {
             other.GetComponent<PlayerMovement>().Harm(1);
