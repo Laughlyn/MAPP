@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 [System.Serializable]
-public class MenuControll : MonoBehaviour {
+public class MenuControll : MonoBehaviour
+{
 
 	public void StartGame()
     {
