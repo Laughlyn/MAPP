@@ -8,7 +8,12 @@ public class PlayerController : MonoBehaviour
 
     public GameObject projectilePrefab;
     public Transform bulletSpawn;
-    public int projectileSpeed = 5;
+    public float projectileSpeed = 10f;
+    public float speed = 5f;
+    public float distance = 9f;
+    public float bulletDelay = 0.3f;
+
+    float direction = 1f;
 
     // Use this for initialization
     void Start()
@@ -26,12 +31,19 @@ public class PlayerController : MonoBehaviour
 
         // Destroy the bullet after 5 seconds
         Destroy(bullet, 5.0f);
-
     }
 
     // Update is called once per frame
     void Update()
     {
-       
+        if (transform.position.x > distance && direction > 0)
+        {
+            direction *= -1;
+        }
+        else if (transform.position.x < -distance && direction < 0)
+        {
+            direction *= -1;
+        }
+        transform.Translate(Time.deltaTime * direction * speed, 0, 0, Space.World);
     }
 }

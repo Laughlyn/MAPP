@@ -9,23 +9,38 @@ public class CubeController: MonoBehaviour
     public Material material;
     public int hitLimit;
     int hitCounter;
-    Material CubeMaterial;
-    Color CubeColor;
+
+    public float hitDistance;
+    public Vector3 hitVector = new Vector3(0 , 5.0f);
 	public GameObject previousCube;
 	public GameObject nextCube;
 
-	// Use this for initialization
-	void Start ()
+    Vector3 destination;
+    Vector3 resetVector;
+
+    Material CubeMaterial;
+    Color CubeColor;
+
+    // Use this for initialization
+    void Start ()
 	{
-        CubeMaterial = GetComponent<Renderer>().material;
-        CubeColor = new Color(Random.value, Random.value, Random.value);
-        CubeMaterial.SetColor("_Color", CubeColor);
+        destination = this.transform.position;
+        resetVector.x = this.transform.position.x;
+
+        //CubeMaterial = GetComponent<Renderer>().material;
+        //CubeColor = new Color(Random.value, Random.value, Random.value);
+        //CubeMaterial.SetColor("_Color", CubeColor);
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
-       //CubeMaterial.SetColor("_EmissionColor", new Color(CubeMaterial.GetColor("_EmissionColor").r * 0.9f, CubeMaterial.GetColor("_EmissionColor").g * 0.9f, CubeMaterial.GetColor("_EmissionColor").b * 0.9f));
+        if(this.transform.position != destination)
+        {
+            this.transform.position += (destination - this.transform.position) * Time.deltaTime;
+        }
+        
+        //CubeMaterial.SetColor("_EmissionColor", new Color(CubeMaterial.GetColor("_EmissionColor").r * 0.9f, CubeMaterial.GetColor("_EmissionColor").g * 0.9f, CubeMaterial.GetColor("_EmissionColor").b * 0.9f));
 	}
 
     private void OnTriggerEnter(Collider other)
@@ -35,27 +50,29 @@ public class CubeController: MonoBehaviour
             if (other.GetComponent<Rigidbody>().velocity.y > 0)
             {
                 hitCounter++;
-                transform.position = new Vector3(transform.position.x, transform.position.y + 1f);
+                destination += hitVector;
+                //transform.position = new Vector3(transform.position.x, transform.position.y + hitDistance);
             }
             if (other.GetComponent<Rigidbody>().velocity.y < 0)
             {
                 hitCounter--;
-                transform.position = new Vector3(transform.position.x, transform.position.y - 1f);
+                destination -= hitVector;
+                //transform.position = new Vector3(transform.position.x, transform.position.y - hitDistance);
             }
             Destroy(other.gameObject);
         }
 
-        if (other.CompareTag("Player1"))
+        if (other.gameObject.tag == "Player1")
         {
             other.GetComponent<PlayerMovement>().Harm(1);
-            Debug.Log("Träffa");
-            this.transform.position = new Vector3(transform.position.x, 0);
+            Debug.Log("Träffa Player1");
+            destination = resetVector;
         }
-        if (other.CompareTag("Player2"))
+        if (other.gameObject.tag == "Player2")
         {
             other.GetComponent<PlayerMovement>().Harm2(1);
-            Debug.Log("Träffa Player");
-            this.transform.position = new Vector3(transform.position.x, 0);
+            Debug.Log("Träffa Player2");
+            destination = resetVector;
         }
     }
 }

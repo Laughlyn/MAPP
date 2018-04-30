@@ -19,8 +19,6 @@ public class GameController : MonoBehaviour
     float bulletTimer1;
     float bulletTimer2;
 
-    public float bulletDelay = 0.3f;
-
     public GameObject heart1, heart2, heart3, heart4, heart5, heart6;
 
     public GameObject restart;
@@ -65,14 +63,13 @@ public class GameController : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-                if (Input.mousePosition.y < Screen.height / 2 && bulletTimer1 > bulletDelay)
+                if (Input.mousePosition.y < Screen.height / 2 && bulletTimer1 > player1Controller.bulletDelay)
                 {
                     player1Controller.SpawnProjectile();
                     bulletTimer1 = 0;
                 }
-                if (Input.mousePosition.y > Screen.height / 2 && bulletTimer2 > bulletDelay)
+                if (Input.mousePosition.y > Screen.height / 2 && bulletTimer2 > player2Controller.bulletDelay)
                 {
-
                     player2Controller.SpawnProjectile();
                     bulletTimer2 = 0;
                 }
@@ -83,12 +80,12 @@ public class GameController : MonoBehaviour
             {
                 for (int i = 0; i < Input.touchCount; i++)
                 {
-                    if (myTouches[i].position.y < Screen.height / 2 && bulletTimer1 > bulletDelay)
+                    if (myTouches[i].position.y < Screen.height / 2 && bulletTimer1 > player1Controller.bulletDelay)
                     {
                         player1Controller.SpawnProjectile();
                         bulletTimer1 = 0;
                     }
-                    if (myTouches[i].position.y > Screen.height / 2 && bulletTimer2 > bulletDelay)
+                    if (myTouches[i].position.y > Screen.height / 2 && bulletTimer2 > player2Controller.bulletDelay)
                     {
                         player2Controller.SpawnProjectile();
                         bulletTimer2 = 0;

@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    float direction = 1f;
-    public float speed = 1f;
-    public float distance = 2.3f;
-
     private float damageTimer;
     private float damageTimer2;
     public int health = 3;
@@ -23,15 +19,7 @@ public class PlayerMovement : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        
-        if (transform.position.x > distance || transform.position.x < -distance)
-        {
-            direction *= -1;
-        }
-        transform.Translate(Time.deltaTime*direction*speed, 0, 0, Space.World);
-
         damageTimer += Time.deltaTime;
-
     }
 
     public void Harm(int dmg)
