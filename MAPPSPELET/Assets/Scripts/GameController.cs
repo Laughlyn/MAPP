@@ -52,15 +52,15 @@ public class GameController : MonoBehaviour
     {
         if(Input.GetKeyUp(KeyCode.Escape))
         {
-            Application.Quit();
+            SceneManager.LoadScene(0);
         }
         
-
         bulletTimer1 += Time.deltaTime;
         bulletTimer2 += Time.deltaTime;
 
         if (!gameOver)
         {
+            //Mouse Controls
             if (Input.GetMouseButtonDown(0))
             {
                 if (Input.mousePosition.y < Screen.height / 2 && bulletTimer1 > player1Controller.bulletDelay)
@@ -75,6 +75,8 @@ public class GameController : MonoBehaviour
                 }
             }
 
+
+            //Touch Controls
             Touch[] myTouches = Input.touches;
             if (Input.touchCount > 0)
             {
@@ -102,6 +104,7 @@ public class GameController : MonoBehaviour
         bulletTimer1 = 3.0f;
         bulletTimer2 = 3.0f;
 
+        RemoveCubes();
         CreateCubes();
 
         heart1.SetActive(true);
@@ -135,7 +138,16 @@ public class GameController : MonoBehaviour
             {
                 previousCube.GetComponent<CubeController>().nextCube = cube;
             }
+        }
+    }
 
+    void RemoveCubes()
+    {
+        GameObject[] list = GameObject.FindGameObjectsWithTag("Cube");
+
+        foreach (var cube in list)
+        {
+            Destroy(cube);
         }
     }
 }

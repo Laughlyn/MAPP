@@ -1,6 +1,6 @@
-WindowsStandalone
+Android
 PlayerPath?
-C:/Users/laugh/Documents/GitHub/MAPP/MAPP/MAPPSPELET/Blocks.exe
+C:/Users/laugh/Documents/GitHub/MAPP/MAPP/MAPPSPELET/Blocks.apk
 SceneListBegin?
 Assets/Scenes/Menu.unity
 Assets/Scenes/PlayScene.unity

@@ -5,7 +5,6 @@ using UnityEngine;
 [System.Serializable]
 public class PlayerController : MonoBehaviour
 {
-
     public GameObject projectilePrefab;
     public Transform bulletSpawn;
     public float projectileSpeed = 10f;
