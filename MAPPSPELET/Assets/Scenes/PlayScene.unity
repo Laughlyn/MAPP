@@ -189,12 +189,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: e7dfa946d91818745bd414f0fd4cdfde, type: 3}
-        m_MethodName: 
+      - m_Target: {fileID: 1381515061}
+        m_MethodName: BackToMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -411,16 +411,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 114906206200228408, guid: 64b334d805717b84691e7e3267de19e9,
-        type: 2}
-      propertyPath: health
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114906206200228408, guid: 64b334d805717b84691e7e3267de19e9,
-        type: 2}
-      propertyPath: health2
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 64b334d805717b84691e7e3267de19e9, type: 2}
   m_IsPrefabParent: 0
@@ -461,16 +451,6 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4907661093824426, guid: 99b0f4f905dacd8498dd71ed5631b1e4, type: 2}
       propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114906206200228408, guid: 99b0f4f905dacd8498dd71ed5631b1e4,
-        type: 2}
-      propertyPath: health
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114906206200228408, guid: 99b0f4f905dacd8498dd71ed5631b1e4,
-        type: 2}
-      propertyPath: health2
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
