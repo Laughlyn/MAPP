@@ -411,6 +411,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114906206200228408, guid: 64b334d805717b84691e7e3267de19e9,
+        type: 2}
+      propertyPath: health
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114906206200228408, guid: 64b334d805717b84691e7e3267de19e9,
+        type: 2}
+      propertyPath: health2
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 64b334d805717b84691e7e3267de19e9, type: 2}
   m_IsPrefabParent: 0
@@ -451,6 +461,16 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4907661093824426, guid: 99b0f4f905dacd8498dd71ed5631b1e4, type: 2}
       propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114906206200228408, guid: 99b0f4f905dacd8498dd71ed5631b1e4,
+        type: 2}
+      propertyPath: health
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114906206200228408, guid: 99b0f4f905dacd8498dd71ed5631b1e4,
+        type: 2}
+      propertyPath: health2
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1009,9 +1029,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: -19.100006, y: -38.1}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 0.5}
 --- !u!1 &1238296741
 GameObject:
   m_ObjectHideFlags: 0
@@ -1020,7 +1040,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1238296742}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Player1_Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1045,8 +1065,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 19.7, y: -112.6}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!1 &1248842288
 GameObject:
@@ -1225,7 +1245,7 @@ MonoBehaviour:
   heart6: {fileID: 1830282647}
   restart: {fileID: 1064357521}
   gameOver: 0
-  menuPanel: {fileID: 0}
+  menuPanel: {fileID: 1064357521}
 --- !u!4 &1381515062
 Transform:
   m_ObjectHideFlags: 0
@@ -1326,7 +1346,7 @@ RectTransform:
   m_GameObject: {fileID: 1547328098}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1835566954}
   - {fileID: 1795974842}
@@ -1336,8 +1356,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 35, y: 150}
+  m_AnchoredPosition: {x: -19.35, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &1547328100
 MonoBehaviour:
@@ -1811,17 +1831,17 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: e7dfa946d91818745bd414f0fd4cdfde, type: 3}
-        m_MethodName: 
+      - m_Target: {fileID: 1381515061}
+        m_MethodName: BackToMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1835566956

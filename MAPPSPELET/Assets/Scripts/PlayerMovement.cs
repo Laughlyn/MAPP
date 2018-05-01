@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
 	void Update ()
     {
         damageTimer += Time.deltaTime;
+        damageTimer2 += Time.deltaTime;
     }
 
     public void Harm(int dmg)
