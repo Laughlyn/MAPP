@@ -10,9 +10,13 @@ public class CubeController: MonoBehaviour
     int hitCounter;
 
     public float hitDistance;
+    public Vector3 destinationMax;
     public Vector3 hitVector = new Vector3(0 , 5.0f);
 	public GameObject previousCube;
 	public GameObject nextCube;
+
+    public AudioClip impact;
+    private AudioSource source;
 
     Vector3 destination;
     Vector3 resetVector;
@@ -49,12 +53,16 @@ public class CubeController: MonoBehaviour
             {
                 hitCounter++;
                 destination += hitVector;
+                destination.y = Mathf.Clamp(destination.y, -destinationMax.y, destinationMax.y);
             }
             if (other.GetComponent<Rigidbody>().velocity.y < 0)
             {
                 hitCounter--;
                 destination -= hitVector;
+                destination.y = Mathf.Clamp(destination.y, -destinationMax.y, destinationMax.y);
             }
+            source = GetComponent<AudioSource>();
+            source.PlayOneShot(impact);
             Destroy(other.gameObject);
         }
 
