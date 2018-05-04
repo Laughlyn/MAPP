@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public GameObject projectilePrefab;
     public Button overchargeButton;
     public Transform bulletSpawn;
+    public Transform heatMeter;
     public float projectileSpeed = 10f;
     public float shipSpeed = 5f;
     public float distance = 9f;
@@ -26,6 +27,10 @@ public class PlayerController : MonoBehaviour
     float timer;
     float direction = 1f;
 
+    public float heatMax = 100f;
+    public float heatPerShot = 5f;
+    float heat;
+
     // Use this for initialization
     void Start()
     {
@@ -35,6 +40,11 @@ public class PlayerController : MonoBehaviour
 
     public void SpawnProjectile()
     {
+        if (heat > heatMax)
+        {
+            return;
+        }
+
         // Create the Bullet from the Bullet Prefab
         var bullet = (GameObject)Instantiate(projectilePrefab, bulletSpawn.position, bulletSpawn.rotation);
 
@@ -45,6 +55,9 @@ public class PlayerController : MonoBehaviour
 
         //Play sound
         source.PlayOneShot(shoot);
+
+        //Increase heat
+        heat += heatPerShot;
 
         // Destroy the bullet after 5 seconds
         Destroy(bullet, 5.0f);
@@ -68,8 +81,18 @@ public class PlayerController : MonoBehaviour
         if(timer > overchargeDuration)
         {
             bulletDelay = defaultBulletDelay;
+        }
+        if(timer > overchargeCooldown)
+        {
             overchargeButton.interactable = true;
         }
+
+        if (heat > 0)
+        {
+            heat -= Time.deltaTime * 10;
+        }
+
+        heatMeter.GetComponent<SpriteRenderer>().color = new Color(1, 1 - (heat / 100), 1 - (heat / 100)); 
     }
 
     public void Overcharge()

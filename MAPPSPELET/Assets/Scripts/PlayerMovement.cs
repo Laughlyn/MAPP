@@ -9,6 +9,10 @@ public class PlayerMovement : MonoBehaviour
     public int health = 3;
     public int health2 = 3;
 
+    public CameraShake cameraShake;
+    public AudioClip harm;
+    private AudioSource source;
+
     // Use this for initialization
     void Start ()
     {
@@ -44,6 +48,12 @@ public class PlayerMovement : MonoBehaviour
                 GameController.GameControllerInstance.restart.SetActive(true);
                 GameController.GameControllerInstance.gameOver = true;
             }
+            StartCoroutine(cameraShake.Shake(.15f, 4f));
+
+            source = GetComponent<AudioSource>();
+
+            //Play sound
+            source.PlayOneShot(harm);
         }
     }
     public void Harm2(int dmg)
@@ -67,6 +77,12 @@ public class PlayerMovement : MonoBehaviour
                 GameController.GameControllerInstance.restart.SetActive(true);
                 GameController.GameControllerInstance.gameOver = true;
             }
+            StartCoroutine(cameraShake.Shake(.15f, .4f));
+
+            source = GetComponent<AudioSource>();
+
+            //Play sound
+            source.PlayOneShot(harm);
         }
     }
 }

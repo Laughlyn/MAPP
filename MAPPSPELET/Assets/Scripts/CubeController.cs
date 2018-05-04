@@ -24,15 +24,21 @@ public class CubeController: MonoBehaviour
     Material CubeMaterial;
     Color CubeColor;
 
+    float randomValue;
+
     // Use this for initialization
     void Start ()
 	{
         destination = transform.position;
         resetVector.x = transform.position.x;
 
-        //Random color for blocks
+        //randomValue = Random.value;
+
+        //hitVector = new Vector3(0, randomValue * 10);
+
+        ////Random color for blocks
         //CubeMaterial = GetComponent<Renderer>().material;
-        //CubeColor = new Color(Random.value, Random.value, Random.value);
+        //CubeColor = new Color(randomValue, randomValue, randomValue);
         //CubeMaterial.SetColor("_Color", CubeColor);
     }
 	
@@ -43,7 +49,7 @@ public class CubeController: MonoBehaviour
         {
             transform.position += (destination - transform.position) * Time.deltaTime;
         }
-	}
+    }
 
     private void OnTriggerEnter(Collider other)
     {
