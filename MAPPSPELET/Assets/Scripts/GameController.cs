@@ -36,13 +36,7 @@ public class GameController : MonoBehaviour
         //Create a row of cubes
 
         CreateCubes();
-
-        heart1.SetActive(true);
-        heart2.SetActive(true);
-        heart3.SetActive(true);
-        heart4.SetActive(true);
-        heart5.SetActive(true);
-        heart6.SetActive(true);
+        ResetHearts();
 
         restart.SetActive(false);
 	}
@@ -50,69 +44,20 @@ public class GameController : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        if(Input.GetKeyUp(KeyCode.Escape))
-        {
-            SceneManager.LoadScene(0);
-        }
-        
-        bulletTimer1 += Time.deltaTime;
-        bulletTimer2 += Time.deltaTime;
 
-        if (!gameOver)
-        {
-            //Mouse Controls
-            if (Input.GetMouseButtonDown(0))
-            {
-                if (Input.mousePosition.y < Screen.height / 2 && bulletTimer1 > player1Controller.bulletDelay)
-                {
-                    player1Controller.SpawnProjectile();
-                    bulletTimer1 = 0;
-                }
-                if (Input.mousePosition.y > Screen.height / 2 && bulletTimer2 > player2Controller.bulletDelay)
-                {
-                    player2Controller.SpawnProjectile();
-                    bulletTimer2 = 0;
-                }
-            }
-
-
-            //Touch Controls
-            Touch[] myTouches = Input.touches;
-            if (Input.touchCount > 0)
-            {
-                for (int i = 0; i < Input.touchCount; i++)
-                {
-                    if (myTouches[i].position.y < Screen.height / 2 && bulletTimer1 > player1Controller.bulletDelay)
-                    {
-                        player1Controller.SpawnProjectile();
-                        bulletTimer1 = 0;
-                    }
-                    if (myTouches[i].position.y > Screen.height / 2 && bulletTimer2 > player2Controller.bulletDelay)
-                    {
-                        player2Controller.SpawnProjectile();
-                        bulletTimer2 = 0;
-                    }
-                }
-            }
-        }
     }
 
     public void RestartGame()
     {
         GameControllerInstance = this;
 
-        bulletTimer1 = 3.0f;
-        bulletTimer2 = 3.0f;
+        player1Controller.bulletTimer = 3.0f;
+        player2Controller.bulletTimer = 3.0f;
 
         RemoveCubes();
         CreateCubes();
-
-        heart1.SetActive(true);
-        heart2.SetActive(true);
-        heart3.SetActive(true);
-        heart4.SetActive(true);
-        heart5.SetActive(true);
-        heart6.SetActive(true);
+        ResetHearts();
+        
         restart.SetActive(false);
         gameOver = false;
     }
@@ -149,5 +94,15 @@ public class GameController : MonoBehaviour
         {
             Destroy(cube);
         }
+    }
+
+    void ResetHearts()
+    {
+        heart1.SetActive(true);
+        heart2.SetActive(true);
+        heart3.SetActive(true);
+        heart4.SetActive(true);
+        heart5.SetActive(true);
+        heart6.SetActive(true);
     }
 }

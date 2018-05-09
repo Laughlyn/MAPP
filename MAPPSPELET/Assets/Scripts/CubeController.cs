@@ -60,13 +60,40 @@ public class CubeController: MonoBehaviour
                 hitCounter++;
                 destination += hitVector;
                 destination.y = Mathf.Clamp(destination.y, -destinationMax.y, destinationMax.y);
+                Component[] spriteRenderers;
+
+                spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
+
+                foreach (SpriteRenderer spriteRenderer in spriteRenderers)
+                {
+                    if (spriteRenderer.gameObject.CompareTag("ImpactBottom"))
+                    {
+                        Color color = spriteRenderer.color;
+                        color.a = 1f;
+                        spriteRenderer.gameObject.GetComponent<SpriteRenderer>().color = color;
+                    }
+                }
             }
             if (other.GetComponent<Rigidbody>().velocity.y < 0)
             {
                 hitCounter--;
                 destination -= hitVector;
                 destination.y = Mathf.Clamp(destination.y, -destinationMax.y, destinationMax.y);
+                Component[] spriteRenderers;
+
+                spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
+
+                foreach (SpriteRenderer spriteRenderer in spriteRenderers)
+                {
+                    if (spriteRenderer.gameObject.CompareTag("ImpactTop"))
+                    {
+                        Color color = spriteRenderer.color;
+                        color.a = 1f;
+                        spriteRenderer.gameObject.GetComponent<SpriteRenderer>().color = color;
+                    }
+                }
             }
+            
             source = GetComponent<AudioSource>();
             source.PlayOneShot(impact);
             Destroy(other.gameObject);
@@ -75,13 +102,11 @@ public class CubeController: MonoBehaviour
         if (other.gameObject.tag == "Player1")
         {
             other.GetComponent<PlayerMovement>().Harm(1);
-            Debug.Log("Träffa Player1");
             destination = resetVector;
         }
         if (other.gameObject.tag == "Player2")
         {
             other.GetComponent<PlayerMovement>().Harm2(1);
-            Debug.Log("Träffa Player2");
             destination = resetVector;
         }
     }

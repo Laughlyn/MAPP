@@ -13,8 +13,9 @@ public class PlayerController : MonoBehaviour
     public float projectileSpeed = 10f;
     public float shipSpeed = 5f;
     public float distance = 9f;
+    Vector3 destination;
     
-    public float defaultBulletDelay = 0.3f;
+    public float defaultBulletDelay = 0.5f;
     public float overchargeBulletDelay = 0.1f;
     public float overchargeCooldown = 10.0f;
     public float overchargeDuration = 2.0f;
@@ -24,11 +25,13 @@ public class PlayerController : MonoBehaviour
     private AudioSource source;
 
     public float bulletDelay;
+    public float bulletTimer;
     float timer;
-    float direction = 1f;
+    public float direction = 0f;
 
     public float heatMax = 100f;
-    public float heatPerShot = 5f;
+    public float heatPerShot = 10f;
+    public float heatDispersionRate = 20f;
     float heat;
 
     // Use this for initialization
@@ -66,6 +69,9 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        bulletTimer += Time.deltaTime;
+
+        //Move the ship
         if (transform.position.x > distance && direction > 0)
         {
             direction *= -1;
@@ -76,6 +82,7 @@ public class PlayerController : MonoBehaviour
         }
         transform.Translate(Time.deltaTime * direction * shipSpeed, 0, 0, Space.World);
 
+        //Handle overcharge
         timer += Time.deltaTime;
 
         if(timer > overchargeDuration)
@@ -87,9 +94,14 @@ public class PlayerController : MonoBehaviour
             overchargeButton.interactable = true;
         }
 
-        if (heat > 0)
+        //Heat dispersion
+        if (heat > 0f)
         {
-            heat -= Time.deltaTime * 10;
+            heat -= Time.deltaTime * heatDispersionRate;
+            if(heat < 0f)
+            {
+                heat = 0f;
+            }
         }
 
         heatMeter.GetComponent<SpriteRenderer>().color = new Color(1, 1 - (heat / 100), 1 - (heat / 100)); 

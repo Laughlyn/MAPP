@@ -1,0 +1,108 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1921468676266604}
+  m_IsPrefabParent: 1
+--- !u!1 &1921468676266604
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 224980162599091282}
+  - component: {fileID: 222036712996500224}
+  - component: {fileID: 114182702397835374}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &114182702397835374
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1921468676266604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: "BoxBlasters VS\r\nA long time ago, in a galaxy\u2026 some distance away,
+    there was war,\r\nbloodshed and sorrow. But then the United Peace council was
+    formed\r\nby those who had grown weary of burying loved ones.\r\nThe council banned
+    firearms and laser cannons, missiles and\r\nblasters, almost every weapon that
+    could be used to harm another\r\nbeing was banned and everyone rejoiced. This
+    ban was to be known as\r\nthe United peace accords. There was peace among the
+    colonies and\r\ntrade prospered, but on one planet, conflict was brewing\u2026\r\nThe
+    planet Boxatron had long been a place where proud warrior clans\r\nwaged war against
+    one another, with the two most antagonistic clans\r\nbeing clan McChest with their
+    red banner symbolizing power and\r\nstrength, and clan Cart\xF3n with their blue
+    banner symbolizing\r\nconservatism and order.\r\nThese two warring clans had,
+    since the United peace accords, been in\r\na mutually beneficial peace agreement
+    with arranged marriages and\r\ntrade alliances holding it up. But one day, the
+    eldest son of house\r\nMcChest, Case McChest, refused to marry the eldest daughter
+    of house\r\nCart\xF3n, Cofferina Cart\xF3n. This sparked the beginning of civil
+    war,\r\nbut with firearms and laser cannons, missiles and blasters, and\r\nalmost
+    every other weapon banned and extinct, how would they fight\r\ntheir war?\r\nTo
+    be able to fight their war without interference from the United\r\npeace council
+    they decided that battle should take place in space,\r\nand that the only way
+    to defeat your enemy was to fire pulse cannons\r\non boxes that where for some
+    reason lined up in a row between them.\r\nThis was the only way to solve the conflict.
+    THE ONLY WAY\u2026"
+--- !u!222 &222036712996500224
+CanvasRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1921468676266604}
+--- !u!224 &224980162599091282
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1921468676266604}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -888.2943, y: -520.3743}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
