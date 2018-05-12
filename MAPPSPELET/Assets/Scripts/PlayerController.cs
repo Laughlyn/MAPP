@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,7 +14,7 @@ public class PlayerController : MonoBehaviour
     public float projectileSpeed = 10f;
     public float shipSpeed = 5f;
     public float distance = 9f;
-    Vector3 destination;
+    Vector3 speed;
     
     public float defaultBulletDelay = 0.5f;
     public float overchargeBulletDelay = 0.1f;
@@ -26,28 +27,18 @@ public class PlayerController : MonoBehaviour
 
     public float bulletDelay;
     public float bulletTimer;
-    float timer;
+    float overchargeTimer;
     public float direction = 0f;
-
-    public float heatMax = 100f;
-    public float heatPerShot = 10f;
-    public float heatDispersionRate = 20f;
-    float heat;
 
     // Use this for initialization
     void Start()
     {
-        timer = overchargeCooldown;
+        overchargeTimer = overchargeCooldown;
         bulletDelay = defaultBulletDelay;
     }
 
     public void SpawnProjectile()
     {
-        if (heat > heatMax)
-        {
-            return;
-        }
-
         // Create the Bullet from the Bullet Prefab
         var bullet = (GameObject)Instantiate(projectilePrefab, bulletSpawn.position, bulletSpawn.rotation);
 
@@ -59,11 +50,24 @@ public class PlayerController : MonoBehaviour
         //Play sound
         source.PlayOneShot(shoot);
 
-        //Increase heat
-        heat += heatPerShot;
-
         // Destroy the bullet after 5 seconds
         Destroy(bullet, 5.0f);
+    }
+
+    internal void MoveRight()
+    {
+        if (speed.x < 10)
+        {
+            speed += new Vector3(4, 0);
+        }
+    }
+
+    internal void MoveLeft()
+    {
+        if (speed.x > -10)
+        {
+            speed += new Vector3(-4, 0);
+        }
     }
 
     // Update is called once per frame
@@ -71,51 +75,73 @@ public class PlayerController : MonoBehaviour
     {
         bulletTimer += Time.deltaTime;
 
-        //Move the ship
-        if (transform.position.x > distance && direction > 0)
+        if (bulletTimer > bulletDelay)
         {
-            direction *= -1;
+            SpawnProjectile();
+            bulletTimer = 0f;
         }
-        else if (transform.position.x < -distance && direction < 0)
+
+
+        //Stop the ship from going out of bounds
+        if(transform.position.x < -distance)
         {
-            direction *= -1;
+            transform.position = new Vector3(distance, transform.position.y);
         }
-        transform.Translate(Time.deltaTime * direction * shipSpeed, 0, 0, Space.World);
+
+        if (transform.position.x > distance)
+        {
+            transform.position = new Vector3(distance, transform.position.y);
+        }
+
+        //Move ship
+        transform.position += speed * Time.deltaTime;
+
+        //Make the ship stop if there's no input
+        Stop();
 
         //Handle overcharge
-        timer += Time.deltaTime;
+        overchargeTimer += Time.deltaTime;
 
-        if(timer > overchargeDuration)
+        if(overchargeTimer > overchargeDuration)
         {
             bulletDelay = defaultBulletDelay;
         }
-        if(timer > overchargeCooldown)
+
+        if(overchargeTimer > overchargeCooldown)
         {
             overchargeButton.interactable = true;
         }
+    }
 
-        //Heat dispersion
-        if (heat > 0f)
+    internal void PowerUp(int powerupNumber)
+    {
+        if(powerupNumber == 1)
         {
-            heat -= Time.deltaTime * heatDispersionRate;
-            if(heat < 0f)
-            {
-                heat = 0f;
-            }
+            Overcharge();
         }
-
-        heatMeter.GetComponent<SpriteRenderer>().color = new Color(1, 1 - (heat / 100), 1 - (heat / 100)); 
     }
 
     public void Overcharge()
     {
-        if (timer > overchargeCooldown)
+        if (overchargeTimer > overchargeCooldown)
         {
             bulletDelay = overchargeBulletDelay;
-            timer = 0f;
+            overchargeTimer = 0f;
             overchargeButton.interactable = false;
             source = GetComponent<AudioSource>();
             source.PlayOneShot(overcharge);
+        }
+    }
+
+    public void Stop()
+    {
+        if (speed.x > 0)
+        {
+            speed += new Vector3(-2, 0);
+        }
+        if (speed.x < 0)
+        {
+            speed += new Vector3(2, 0);
         }
     }
 }

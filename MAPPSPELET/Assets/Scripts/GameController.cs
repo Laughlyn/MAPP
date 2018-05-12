@@ -16,9 +16,6 @@ public class GameController : MonoBehaviour
     public PlayerController player1Controller;
     public PlayerController player2Controller;
 
-    float bulletTimer1;
-    float bulletTimer2;
-
     public GameObject heart1, heart2, heart3, heart4, heart5, heart6;
 
     public GameObject restart;
@@ -30,11 +27,8 @@ public class GameController : MonoBehaviour
 	{
         GameControllerInstance = this;
         gameOver = false;
-        bulletTimer1 = 3.0f;
-        bulletTimer2 = 3.0f;
 
         //Create a row of cubes
-
         CreateCubes();
         ResetHearts();
 

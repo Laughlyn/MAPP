@@ -8,6 +8,8 @@ public class InputControllerMove : MonoBehaviour
     public GameController gameController;
     public CameraShake cameraShake;
 
+    public bool mouseControls = false;
+
     // Use this for initialization
     void Start ()
     {
@@ -17,11 +19,6 @@ public class InputControllerMove : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        gameController.player1Controller.SpawnProjectile();
-        gameController.player1Controller.bulletTimer = 0;
-        gameController.player2Controller.SpawnProjectile();
-        gameController.player2Controller.bulletTimer = 0;
-
         if (Input.GetKeyUp(KeyCode.Escape))
         {
             gameController.BackToMenu();
@@ -30,34 +27,34 @@ public class InputControllerMove : MonoBehaviour
 
         if (!gameController.gameOver)
         {
-            if (Input.GetMouseButtonUp(0))
+            if (mouseControls)
             {
-                gameController.player1Controller.direction = 0f;
-                gameController.player2Controller.direction = 0f;
+                if (!Input.GetMouseButtonDown(0))
+                {
+                    gameController.player1Controller.Stop();
+                    gameController.player2Controller.Stop();
+                }
+                //Mouse Controls
+                if (Input.GetMouseButton(0))
+                {
+                    if (Input.mousePosition.y < Screen.height / 2 && Input.mousePosition.x > Screen.width / 2)
+                    {
+                        gameController.player1Controller.MoveRight();
+                    }
+                    if (Input.mousePosition.y < Screen.height / 2 && Input.mousePosition.x < Screen.width / 2)
+                    {
+                        gameController.player1Controller.MoveLeft();
+                    }
+                    if (Input.mousePosition.y > Screen.height / 2 && Input.mousePosition.x < Screen.width / 2)
+                    {
+                        gameController.player2Controller.MoveLeft();
+                    }
+                    if (Input.mousePosition.y > Screen.height / 2 && Input.mousePosition.x > Screen.width / 2)
+                    {
+                        gameController.player2Controller.MoveRight();
+                    }
+                }
             }
-
-            //Mouse Controls
-            if (Input.GetMouseButtonDown(0))
-            {
-                if (Input.mousePosition.y < Screen.height / 2 && Input.mousePosition.x > Screen.width / 2)
-                {
-                    gameController.player1Controller.direction = 1f;
-                }
-                if (Input.mousePosition.y < Screen.height / 2 && Input.mousePosition.x < Screen.width / 2)
-                {
-                    gameController.player1Controller.direction = -1f;
-                }
-                if (Input.mousePosition.y > Screen.height / 2 && Input.mousePosition.x < Screen.width / 2)
-                {
-                    gameController.player2Controller.direction = -1f;
-                }
-                if (Input.mousePosition.y > Screen.height / 2 && Input.mousePosition.x > Screen.width / 2)
-                {
-                    gameController.player2Controller.direction = 1f;
-                }
-            }
-
-
 
             //Touch Controls
             Touch[] myTouches = Input.touches;
@@ -65,38 +62,44 @@ public class InputControllerMove : MonoBehaviour
             {
                 for (int i = 0; i < Input.touchCount; i++)
                 {
-                    if (myTouches[i].position.y < Screen.height / 2 && Input.mousePosition.x > Screen.width / 2)
+                    if (myTouches[i].position.y < Screen.height / 2)
                     {
-
-                        gameController.player1Controller.direction = 1f;
-
+                        if (myTouches[i].position.y < 100)
+                        {
+                            gameController.player1Controller.PowerUp(1);
+                        }
+                        else
+                        {
+                            if (myTouches[i].position.x > Screen.width / 2)
+                            {
+                                gameController.player1Controller.MoveRight();
+                            }
+                            if (myTouches[i].position.x < Screen.width / 2)
+                            {
+                                gameController.player1Controller.MoveLeft();
+                            }
+                        }
                     }
-                    if (myTouches[i].position.y < Screen.height / 2 && Input.mousePosition.x < Screen.width / 2)
+
+                    if (myTouches[i].position.y > Screen.height / 2)
                     {
-
-                        gameController.player1Controller.direction = -1f;
-
-                    }
-                    if (myTouches[i].position.y > Screen.height / 2 && Input.mousePosition.x > Screen.width / 2)
-                    {
-
-                        gameController.player2Controller.direction = 1f;
-
-                    }
-                    if (myTouches[i].position.y > Screen.height / 2 && Input.mousePosition.x < Screen.width / 2)
-                    {
-
-                        gameController.player2Controller.direction = -1f;
-
+                        if (myTouches[i].position.y > Screen.height - 100)
+                        {
+                            gameController.player2Controller.PowerUp(1);
+                        }
+                        else
+                        {
+                            if (myTouches[i].position.x > Screen.width / 2)
+                            {
+                                gameController.player2Controller.MoveRight();
+                            }
+                            if (myTouches[i].position.x < Screen.width / 2)
+                            {
+                                gameController.player2Controller.MoveLeft();
+                            }
+                        }
                     }
                 }
-            }
-            else if(Input.touchCount == 0)
-            {
-
-                gameController.player1Controller.direction = 0f;
-                gameController.player2Controller.direction = 0f;
-
             }
         }
     }

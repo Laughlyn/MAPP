@@ -300,7 +300,9 @@ MonoBehaviour:
   overchargeDuration: 2
   shoot: {fileID: 8300000, guid: 2ef1dec7846d051479bd65f1d9ee9d9d, type: 3}
   overcharge: {fileID: 8300000, guid: d11dfafbe01f77644a88cc931d08bd93, type: 3}
-  bulletDelay: 0.1
+  bulletDelay: 0.5
+  bulletTimer: 0
+  direction: 0
   heatMax: 100
   heatPerShot: 20
   heatDispersionRate: 20
