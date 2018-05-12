@@ -22,6 +22,9 @@ public class GameController : MonoBehaviour
     public bool gameOver;
     public GameObject menuPanel;
 
+    public GameObject player1;
+    public GameObject player2;
+
     // Use this for initialization
     void Start ()
 	{
@@ -31,6 +34,7 @@ public class GameController : MonoBehaviour
         //Create a row of cubes
         CreateCubes();
         ResetHearts();
+        ResetHealth();
 
         restart.SetActive(false);
 	}
@@ -51,6 +55,7 @@ public class GameController : MonoBehaviour
         RemoveCubes();
         CreateCubes();
         ResetHearts();
+        ResetHealth();
         
         restart.SetActive(false);
         gameOver = false;
@@ -98,5 +103,11 @@ public class GameController : MonoBehaviour
         heart4.SetActive(true);
         heart5.SetActive(true);
         heart6.SetActive(true);
+    }
+
+    void ResetHealth()
+    {
+        player1.GetComponent<PlayerMovement>().health = 3;
+        player2.GetComponent<PlayerMovement>().health2 = 3;
     }
 }

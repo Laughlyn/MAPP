@@ -30,11 +30,22 @@ public class PlayerController : MonoBehaviour
     float overchargeTimer;
     public float direction = 0f;
 
+    public Button shieldButton;
+    public float shieldDuration = 5.0f;
+    float shieldTimer;
+    public float shieldCooldown = 10.0f;
+    public GameObject shield;
+    public Boolean shieldIsActive;
+
     // Use this for initialization
     void Start()
     {
+        shield.SetActive(false);
+        shieldIsActive = false;
         overchargeTimer = overchargeCooldown;
         bulletDelay = defaultBulletDelay;
+
+        shieldTimer = shieldCooldown;
     }
 
     public void SpawnProjectile()
@@ -111,6 +122,20 @@ public class PlayerController : MonoBehaviour
         {
             overchargeButton.interactable = true;
         }
+
+        //Handle shield
+        shieldTimer += Time.deltaTime;
+
+        if(shieldTimer > shieldDuration)
+        {
+            shield.SetActive(false);
+            shieldIsActive = false;
+        }
+
+        if(shieldTimer > shieldCooldown)
+        {
+            shieldButton.interactable = true;
+        }
     }
 
     internal void PowerUp(int powerupNumber)
@@ -142,6 +167,32 @@ public class PlayerController : MonoBehaviour
         if (speed.x < 0)
         {
             speed += new Vector3(2, 0);
+        }
+    }
+
+    //NEW
+    public void Shield()
+    {
+        if(shieldTimer > shieldCooldown)
+        {
+            shield.SetActive(true);
+            shieldIsActive = true;
+            shieldButton.interactable = false;
+            shieldTimer = 0f;
+            Debug.Log(shield.ToString());
+        }
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "Cube")
+        {
+            if (shieldIsActive)
+            {
+                shield.SetActive(false);
+                shieldIsActive = false;
+                shieldTimer = 5.1f;
+            }
         }
     }
 }

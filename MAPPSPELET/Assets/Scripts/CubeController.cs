@@ -26,6 +26,9 @@ public class CubeController: MonoBehaviour
 
     float randomValue;
 
+    public GameObject player1;
+    public GameObject player2;
+
     // Use this for initialization
     void Start ()
 	{
@@ -101,13 +104,19 @@ public class CubeController: MonoBehaviour
 
         if (other.gameObject.tag == "Player1")
         {
-            other.GetComponent<PlayerMovement>().Harm(1);
-            destination = resetVector;
+            if (!player1.GetComponent<PlayerController>().shieldIsActive)
+            {
+                other.GetComponent<PlayerMovement>().Harm(1);
+                destination = resetVector;
+            }
         }
         if (other.gameObject.tag == "Player2")
         {
-            other.GetComponent<PlayerMovement>().Harm2(1);
-            destination = resetVector;
+            if (!player2.GetComponent<PlayerController>().shieldIsActive)
+            {
+                other.GetComponent<PlayerMovement>().Harm2(1);
+                destination = resetVector;
+            }
         }
     }
 }
