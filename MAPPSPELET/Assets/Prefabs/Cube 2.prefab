@@ -479,6 +479,8 @@ MonoBehaviour:
   previousCube: {fileID: 0}
   nextCube: {fileID: 0}
   impact: {fileID: 8300000, guid: b2831d1b2732bba40bc431a4b319ad77, type: 3}
+  player1: {fileID: 1489114978216200, guid: 99b0f4f905dacd8498dd71ed5631b1e4, type: 2}
+  player2: {fileID: 1489114978216200, guid: 64b334d805717b84691e7e3267de19e9, type: 2}
 --- !u!114 &114540394596412368
 MonoBehaviour:
   m_ObjectHideFlags: 1
