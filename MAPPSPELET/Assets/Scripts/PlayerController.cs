@@ -216,7 +216,7 @@ public class PlayerController : MonoBehaviour
                 shield.SetActive(false);
                 shieldIsActive = false;
                 shieldTimer = 5.1f;
-                GetComponent<PlayerMovement>().health
+                GetComponent<PlayerMovement>().health += 1;
             }
         }
     }

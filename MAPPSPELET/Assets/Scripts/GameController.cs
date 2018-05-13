@@ -16,8 +16,6 @@ public class GameController : MonoBehaviour
     public PlayerController player1Controller;
     public PlayerController player2Controller;
 
-    public GameObject heart1, heart2, heart3, heart4, heart5, heart6;
-
     public GameObject restart;
     public bool gameOver;
     public GameObject menuPanel;
@@ -54,8 +52,8 @@ public class GameController : MonoBehaviour
 
         RemoveCubes();
         CreateCubes();
-        ResetHearts();
         ResetHealth();
+        ResetHearts();
         
         restart.SetActive(false);
         gameOver = false;
@@ -97,17 +95,16 @@ public class GameController : MonoBehaviour
 
     void ResetHearts()
     {
-        heart1.SetActive(true);
-        heart2.SetActive(true);
-        heart3.SetActive(true);
-        heart4.SetActive(true);
-        heart5.SetActive(true);
-        heart6.SetActive(true);
+        player1.GetComponent<PlayerMovement>().heart1.SetActive(true);
+        player1.GetComponent<PlayerMovement>().heart2.SetActive(true);
+        player1.GetComponent<PlayerMovement>().heart3.SetActive(true);
+        player2.GetComponent<PlayerMovement>().heart1.SetActive(true);
+        player2.GetComponent<PlayerMovement>().heart2.SetActive(true);
+        player2.GetComponent<PlayerMovement>().heart3.SetActive(true);
     }
-
     void ResetHealth()
     {
         player1.GetComponent<PlayerMovement>().health = 3;
-        player2.GetComponent<PlayerMovement>().health2 = 3;
+        player2.GetComponent<PlayerMovement>().health = 3;
     }
 }

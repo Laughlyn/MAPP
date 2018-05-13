@@ -89,7 +89,7 @@ public class InputControllerMove : MonoBehaviour
             }
 
             //Touch Controls
-            /*Touch[] myTouches = Input.touches;
+            Touch[] myTouches = Input.touches;
             if (Input.touchCount > 0)
             {
                 for (int i = 0; i < Input.touchCount; i++)
@@ -158,7 +158,7 @@ public class InputControllerMove : MonoBehaviour
                         }
                     }
                 }
-            }*/
+            }
         }
     }
 }

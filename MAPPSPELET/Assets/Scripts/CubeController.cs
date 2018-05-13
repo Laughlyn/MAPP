@@ -114,7 +114,7 @@ public class CubeController: MonoBehaviour
         {
             if (!player2.GetComponent<PlayerController>().shieldIsActive)
             {
-                other.GetComponent<PlayerMovement>().Harm2(1);
+                other.GetComponent<PlayerMovement>().Harm(1);
                 destination = resetVector;
             }
         }

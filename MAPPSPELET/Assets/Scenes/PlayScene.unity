@@ -2306,7 +2306,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 3
-  health2: 3
+  heart1: {fileID: 1032236593}
+  heart2: {fileID: 980185817}
+  heart3: {fileID: 1830282647}
   cameraShake: {fileID: 1168728799}
   harm: {fileID: 8300000, guid: c625a71e175d848419059649786531d2, type: 3}
 --- !u!65 &1340117898
@@ -2460,12 +2462,6 @@ MonoBehaviour:
   spacing: 2.2
   player1Controller: {fileID: 1003204277}
   player2Controller: {fileID: 2039908685}
-  heart1: {fileID: 883814749}
-  heart2: {fileID: 1378392597}
-  heart3: {fileID: 1248842288}
-  heart4: {fileID: 1032236593}
-  heart5: {fileID: 980185817}
-  heart6: {fileID: 1830282647}
   restart: {fileID: 1064357521}
   gameOver: 0
   menuPanel: {fileID: 1064357521}
@@ -4023,7 +4019,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 3
-  health2: 3
+  heart1: {fileID: 883814749}
+  heart2: {fileID: 1378392597}
+  heart3: {fileID: 1248842288}
   cameraShake: {fileID: 1168728799}
   harm: {fileID: 8300000, guid: c625a71e175d848419059649786531d2, type: 3}
 --- !u!65 &2045980438
