@@ -1174,7 +1174,7 @@ MonoBehaviour:
   oppositeButton: {fileID: 1314853657}
   oppositeDuration: 3
   oppositeCooldown: 10
-  opposite: {fileID: 1387483996}
+  opposite: {fileID: 1773572241}
   oppositeIsActive: 0
 --- !u!1 &1017256509
 GameObject:
@@ -2127,6 +2127,7 @@ Transform:
   m_Children:
   - {fileID: 1164002845}
   - {fileID: 747522253}
+  - {fileID: 1773572243}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
@@ -2501,7 +2502,7 @@ GameObject:
   - component: {fileID: 1387483998}
   - component: {fileID: 1387483997}
   m_Layer: 0
-  m_Name: hudHeart_full
+  m_Name: Opposite P1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2541,7 +2542,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 25bbc61fc6bd6514893973277cf50aba, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 292eef3454af05d49a85be3b8e0c20c1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2557,12 +2558,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1387483996}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 66.5775, y: -59, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_Father: {fileID: 2045980433}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1471954788
 GameObject:
@@ -3077,7 +3078,7 @@ GameObject:
   - component: {fileID: 1773572243}
   - component: {fileID: 1773572242}
   m_Layer: 0
-  m_Name: hudHeart_full (1)
+  m_Name: Opposite P2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3117,7 +3118,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 25bbc61fc6bd6514893973277cf50aba, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 292eef3454af05d49a85be3b8e0c20c1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3134,11 +3135,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1773572241}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -23, y: 34, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_Father: {fileID: 1340117893}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1795974841
 GameObject:
@@ -3803,7 +3804,7 @@ MonoBehaviour:
   oppositeButton: {fileID: 960035269}
   oppositeDuration: 3
   oppositeCooldown: 10
-  opposite: {fileID: 1773572241}
+  opposite: {fileID: 1387483996}
   oppositeIsActive: 0
 --- !u!1 &2045980432
 GameObject:
@@ -3840,6 +3841,7 @@ Transform:
   m_Children:
   - {fileID: 78004329}
   - {fileID: 1017256511}
+  - {fileID: 1387483998}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
