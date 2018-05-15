@@ -11,3 +11,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PlayScene.unity
     guid: 1389e20573f9eed46a3fcdf2f582c640
+  - enabled: 1
+    path: Assets/Scenes/PowerUps.unity
+    guid: dd0d63c0d773feb4a96e57fc28b07594
