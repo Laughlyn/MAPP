@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     private float damageTimer;
     public int health = 3;
     public GameObject heart1, heart2, heart3;
+    public int winner;
 
     public CameraShake cameraShake;
     public AudioClip harm;
@@ -16,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     void Start ()
     {
         health = 3;
+        winner = 0;
 	}
 	
 	// Update is called once per frame
@@ -36,6 +38,17 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("DÖÖ");
             GameController.GameControllerInstance.restart.SetActive(true);
             GameController.GameControllerInstance.gameOver = true;
+
+            if (this.gameObject.CompareTag("Player1"))
+            {
+                Debug.Log("Player1");
+                winner = 2;
+            }
+            else if (this.gameObject.CompareTag("Player2"))
+            {
+                Debug.Log("Player2");
+                winner = 1;
+            }
         }
     }
 

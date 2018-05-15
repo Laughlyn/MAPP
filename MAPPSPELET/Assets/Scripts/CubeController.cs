@@ -58,48 +58,51 @@ public class CubeController: MonoBehaviour
     {
         if (other.gameObject.tag == "Projectile")
         {
-            if (other.GetComponent<Rigidbody>().velocity.y > 0)
+            if (!GameController.GameControllerInstance.gameOver)
             {
-                hitCounter++;
-                destination += hitVector;
-                destination.y = Mathf.Clamp(destination.y, -destinationMax.y, destinationMax.y);
-                Component[] spriteRenderers;
-
-                spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
-
-                foreach (SpriteRenderer spriteRenderer in spriteRenderers)
+                if (other.GetComponent<Rigidbody>().velocity.y > 0)
                 {
-                    if (spriteRenderer.gameObject.CompareTag("ImpactBottom"))
+                    hitCounter++;
+                    destination += hitVector;
+                    destination.y = Mathf.Clamp(destination.y, -destinationMax.y, destinationMax.y);
+                    Component[] spriteRenderers;
+
+                    spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
+
+                    foreach (SpriteRenderer spriteRenderer in spriteRenderers)
                     {
-                        Color color = spriteRenderer.color;
-                        color.a = 1f;
-                        spriteRenderer.gameObject.GetComponent<SpriteRenderer>().color = color;
+                        if (spriteRenderer.gameObject.CompareTag("ImpactBottom"))
+                        {
+                            Color color = spriteRenderer.color;
+                            color.a = 1f;
+                            spriteRenderer.gameObject.GetComponent<SpriteRenderer>().color = color;
+                        }
                     }
                 }
-            }
-            if (other.GetComponent<Rigidbody>().velocity.y < 0)
-            {
-                hitCounter--;
-                destination -= hitVector;
-                destination.y = Mathf.Clamp(destination.y, -destinationMax.y, destinationMax.y);
-                Component[] spriteRenderers;
-
-                spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
-
-                foreach (SpriteRenderer spriteRenderer in spriteRenderers)
+                if (other.GetComponent<Rigidbody>().velocity.y < 0)
                 {
-                    if (spriteRenderer.gameObject.CompareTag("ImpactTop"))
+                    hitCounter--;
+                    destination -= hitVector;
+                    destination.y = Mathf.Clamp(destination.y, -destinationMax.y, destinationMax.y);
+                    Component[] spriteRenderers;
+
+                    spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
+
+                    foreach (SpriteRenderer spriteRenderer in spriteRenderers)
                     {
-                        Color color = spriteRenderer.color;
-                        color.a = 1f;
-                        spriteRenderer.gameObject.GetComponent<SpriteRenderer>().color = color;
+                        if (spriteRenderer.gameObject.CompareTag("ImpactTop"))
+                        {
+                            Color color = spriteRenderer.color;
+                            color.a = 1f;
+                            spriteRenderer.gameObject.GetComponent<SpriteRenderer>().color = color;
+                        }
                     }
                 }
+
+                source = GetComponent<AudioSource>();
+                source.PlayOneShot(impact);
+                Destroy(other.gameObject);
             }
-            
-            source = GetComponent<AudioSource>();
-            source.PlayOneShot(impact);
-            Destroy(other.gameObject);
         }
 
         if (other.gameObject.tag == "Player1")

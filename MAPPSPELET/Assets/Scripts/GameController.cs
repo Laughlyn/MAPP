@@ -23,6 +23,11 @@ public class GameController : MonoBehaviour
     public GameObject player1;
     public GameObject player2;
 
+    public GameObject player1Pic;
+    public GameObject player2Pic;
+
+
+
     // Use this for initialization
     void Start ()
 	{
@@ -35,12 +40,21 @@ public class GameController : MonoBehaviour
         ResetHealth();
 
         restart.SetActive(false);
+
+        player1Pic.SetActive(false);
+        player2Pic.SetActive(false);
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-
+        if (player1.GetComponent<PlayerMovement>().winner == 1 || player2.GetComponent<PlayerMovement>().winner == 1)
+        {
+            player1Pic.SetActive(true);
+        }else if(player1.GetComponent<PlayerMovement>().winner == 2 || player2.GetComponent<PlayerMovement>().winner == 2)
+        {
+            player2Pic.SetActive(true);
+        }
     }
 
     public void RestartGame()
@@ -54,6 +68,12 @@ public class GameController : MonoBehaviour
         CreateCubes();
         ResetHealth();
         ResetHearts();
+
+        player1.GetComponent<PlayerMovement>().winner = 0;
+        player2.GetComponent<PlayerMovement>().winner = 0;
+        player1Pic.SetActive(false);
+        player2Pic.SetActive(false);
+
         
         restart.SetActive(false);
         gameOver = false;
