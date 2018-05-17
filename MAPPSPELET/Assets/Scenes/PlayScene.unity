@@ -1393,7 +1393,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1003204277}
+      - m_Target: {fileID: 2039908685}
         m_MethodName: Shield
         m_Mode: 1
         m_Arguments:
@@ -3667,7 +3667,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 1308841215}
+  m_TargetGraphic: {fileID: 1878371631}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
