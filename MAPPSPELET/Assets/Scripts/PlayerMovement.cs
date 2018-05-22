@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     public CameraShake cameraShake;
     public AudioClip harm;
     private AudioSource source;
+    public Sprite damagedSprites;
 
     // Use this for initialization
     void Start ()
@@ -27,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
         if (health == 2)
         {
             heart3.SetActive(false);
+            this.GetComponent<SpriteRenderer>().sprite = damagedSprites;
         }
         if (health == 1)
         {

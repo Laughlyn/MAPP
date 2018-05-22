@@ -29,34 +29,43 @@ public class PlayerController : MonoBehaviour
     public float bulletTimer;
     float overchargeTimer;
     public float direction = 0f;
+    public GameObject chargeSprites;
+    public Text overchargeCounter;
     
     //shield
     public Button shieldButton;
     public float shieldDuration = 5.0f;
     float shieldTimer;
     public float shieldCooldown = 10.0f;
-    public GameObject shield;
+    public GameObject shieldSprites;
     public Boolean shieldIsActive;
+    public Text shieldCounter;
 
     //Opposite control
     public Button oppositeButton;
     public float oppositeDuration = 3.0f;
     float oppositeTimer;
     public float oppositeCooldown = 10.0f;
-    public GameObject opposite;
+    public GameObject oppositeSprites;
     public Boolean oppositeIsActive;
+    public Text oppositeCounter;
+
 
     // Use this for initialization
     void Start()
     {
-        shield.SetActive(false);
+        shieldSprites.SetActive(false);
         shieldIsActive = false;
         shieldTimer = shieldCooldown;
         overchargeTimer = overchargeCooldown;
+        chargeSprites.SetActive(false);
         bulletDelay = defaultBulletDelay;
-        opposite.SetActive(false);
+        oppositeSprites.SetActive(false);
         oppositeIsActive = false;
         oppositeTimer = oppositeCooldown;
+        shieldCounter.text = "";
+        overchargeCounter.text = "";
+        oppositeCounter.text = "";
     }
 
     public void SpawnProjectile()
@@ -127,11 +136,24 @@ public class PlayerController : MonoBehaviour
         if(overchargeTimer > overchargeDuration)
         {
             bulletDelay = defaultBulletDelay;
+            chargeSprites.SetActive(false);
         }
 
         if(overchargeTimer > overchargeCooldown)
         {
             overchargeButton.interactable = true;
+            overchargeCounter.text = "";
+        }
+
+        if (overchargeTimer < overchargeCooldown)
+        {
+            for (int i = 0; i < overchargeCooldown; i++)
+            {
+                if (overchargeTimer > i && overchargeTimer < (i + 1))
+                {
+                    overchargeCounter.text = (overchargeCooldown - i).ToString();
+                }
+            }
         }
 
         //Handle shield
@@ -139,13 +161,25 @@ public class PlayerController : MonoBehaviour
 
         if(shieldTimer > shieldDuration)
         {
-            shield.SetActive(false);
+            shieldSprites.SetActive(false);
             shieldIsActive = false;
         }
 
         if(shieldTimer > shieldCooldown)
         {
             shieldButton.interactable = true;
+            shieldCounter.text = "";
+        }
+
+        if(shieldTimer < shieldCooldown)
+        {
+            for (int i=0; i <shieldCooldown; i++)
+            {
+                if(shieldTimer > i && shieldTimer < (i + 1))
+                {
+                    shieldCounter.text = (shieldCooldown - i).ToString();
+                }
+            }
         }
 
         //Handle opposite
@@ -153,13 +187,25 @@ public class PlayerController : MonoBehaviour
 
         if(oppositeTimer > oppositeDuration)
         {
-            opposite.SetActive(false);
+            oppositeSprites.SetActive(false);
             oppositeIsActive = false;
         }
 
         if(oppositeTimer > oppositeCooldown)
         {
             oppositeButton.interactable = true;
+            oppositeCounter.text = "";
+        }
+
+        if (oppositeTimer < oppositeCooldown)
+        {
+            for (int i = 0; i < oppositeCooldown; i++)
+            {
+                if (oppositeTimer > i && oppositeTimer < (i + 1))
+                {
+                    oppositeCounter.text = (oppositeCooldown - i).ToString();
+                }
+            }
         }
     }
 
@@ -176,6 +222,7 @@ public class PlayerController : MonoBehaviour
         if (overchargeTimer > overchargeCooldown)
         {
             bulletDelay = overchargeBulletDelay;
+            chargeSprites.SetActive(true);
             overchargeTimer = 0f;
             overchargeButton.interactable = false;
             source = GetComponent<AudioSource>();
@@ -200,7 +247,7 @@ public class PlayerController : MonoBehaviour
     {
         if(shieldTimer > shieldCooldown)
         {
-            shield.SetActive(true);
+            shieldSprites.SetActive(true);
             shieldIsActive = true;
             shieldButton.interactable = false;
             shieldTimer = 0f;
@@ -213,7 +260,7 @@ public class PlayerController : MonoBehaviour
         {
             if (shieldIsActive)
             {
-                shield.SetActive(false);
+                shieldSprites.SetActive(false);
                 shieldIsActive = false;
                 shieldTimer = 5.1f;
                 GetComponent<PlayerMovement>().health += 1;
@@ -225,7 +272,7 @@ public class PlayerController : MonoBehaviour
     {
         if (oppositeTimer > oppositeCooldown)
         {
-            opposite.SetActive(true);
+            oppositeSprites.SetActive(true);
             oppositeIsActive = true;
             oppositeButton.interactable = false;
             oppositeTimer = 0f;

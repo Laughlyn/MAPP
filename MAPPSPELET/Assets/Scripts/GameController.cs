@@ -26,6 +26,9 @@ public class GameController : MonoBehaviour
     public GameObject player1Pic;
     public GameObject player2Pic;
 
+    public Sprite player1Sprite;
+    public Sprite player2Sprite;
+
     // Use this for initialization
     void Start ()
 	{
@@ -36,6 +39,7 @@ public class GameController : MonoBehaviour
         CreateCubes();
         ResetHearts();
         ResetHealth();
+        ResetSprites();
 
         restart.SetActive(false);
 
@@ -67,6 +71,7 @@ public class GameController : MonoBehaviour
         CreateCubes();
         ResetHealth();
         ResetHearts();
+        ResetSprites();
 
         player1.GetComponent<PlayerMovement>().winner = 0;
         player2.GetComponent<PlayerMovement>().winner = 0;
@@ -125,5 +130,11 @@ public class GameController : MonoBehaviour
     {
         player1.GetComponent<PlayerMovement>().health = 3;
         player2.GetComponent<PlayerMovement>().health = 3;
+    }
+
+    void ResetSprites()
+    {
+        player1.GetComponent<SpriteRenderer>().sprite = player1Sprite;
+        player2.GetComponent<SpriteRenderer>().sprite = player2Sprite;
     }
 }
