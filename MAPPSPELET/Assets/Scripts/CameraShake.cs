@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class CameraShake : MonoBehaviour {
 
+    Camera mainCamera = new Camera();
+    Transform originalPosition;
+
 	// Use this for initialization
 	void Start () {
-		
+        mainCamera = GetComponent<Camera>();
+        originalPosition = mainCamera.transform.transform;
 	}
 	
 	// Update is called once per frame
@@ -36,5 +40,11 @@ public class CameraShake : MonoBehaviour {
 
         transform.localPosition = originalPosition;
         transform.localRotation = originalRotation;
+        resetCamera();
+    }
+
+    void resetCamera()
+    {
+        mainCamera.transform.SetPositionAndRotation(originalPosition.position, originalPosition.rotation);
     }
 }

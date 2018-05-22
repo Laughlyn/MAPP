@@ -26,8 +26,6 @@ public class GameController : MonoBehaviour
     public GameObject player1Pic;
     public GameObject player2Pic;
 
-
-
     // Use this for initialization
     void Start ()
 	{
@@ -43,6 +41,7 @@ public class GameController : MonoBehaviour
 
         player1Pic.SetActive(false);
         player2Pic.SetActive(false);
+
 	}
 	
 	// Update is called once per frame
