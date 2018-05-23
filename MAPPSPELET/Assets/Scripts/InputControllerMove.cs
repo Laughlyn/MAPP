@@ -28,8 +28,54 @@ public class InputControllerMove : MonoBehaviour
             return;
         }
 
+
         if (!gameController.gameOver)
         {
+            //Player 1 keyboard controls
+            if (Input.GetKey(KeyCode.Z))
+            {
+                gameController.player1Controller.MoveLeft();
+            }
+            if (Input.GetKey(KeyCode.X))
+            {
+                gameController.player1Controller.MoveRight();
+            }
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                gameController.player1Controller.PowerUp(2);
+            }
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+                gameController.player1Controller.PowerUp(1);
+            }
+            if (Input.GetKeyDown(KeyCode.D))
+            {
+                gameController.player1Controller.PowerUp(3);
+            }
+
+            //Player 2 keyboard controls
+            if (Input.GetKey(KeyCode.LeftArrow))
+            {
+                gameController.player2Controller.MoveLeft();
+            }
+            if (Input.GetKey(KeyCode.RightArrow))
+            {
+                gameController.player2Controller.MoveRight();
+            }
+            if (Input.GetKeyDown(KeyCode.N))
+            {
+                gameController.player2Controller.PowerUp(2);
+            }
+            if (Input.GetKeyDown(KeyCode.B))
+            {
+                gameController.player2Controller.PowerUp(1);
+            }
+            if (Input.GetKeyDown(KeyCode.M))
+            {
+                gameController.player2Controller.PowerUp(3);
+            }
+
+            //Mouse Controls
             if (mouseControls)
             {
                 if (!Input.GetMouseButtonDown(0))
@@ -37,11 +83,10 @@ public class InputControllerMove : MonoBehaviour
                     gameController.player1Controller.Stop();
                     gameController.player2Controller.Stop();
                 }
-                //Mouse Controls
                 if (Input.GetMouseButton(0))
                 {
                     if (Input.mousePosition.y < Screen.height / 2 && Input.mousePosition.x > Screen.width / 2)
-                        {
+                    {
                         if (!player2.GetComponent<PlayerController>().oppositeIsActive)
                         {
                             gameController.player1Controller.MoveRight();
@@ -62,7 +107,7 @@ public class InputControllerMove : MonoBehaviour
                             gameController.player1Controller.MoveRight();
                         }
                     }
-                    
+
                     if (Input.mousePosition.y > Screen.height / 2 && Input.mousePosition.x < Screen.width / 2)
                     {
                         if (!player1.GetComponent<PlayerController>().oppositeIsActive)
@@ -87,7 +132,7 @@ public class InputControllerMove : MonoBehaviour
                     }
                 }
             }
-
+        
             //Touch Controls
             Touch[] myTouches = Input.touches;
             if (Input.touchCount > 0)
@@ -98,7 +143,18 @@ public class InputControllerMove : MonoBehaviour
                     {
                         if (myTouches[i].position.y < 100)
                         {
-                            gameController.player1Controller.PowerUp(1);
+                            if (myTouches[i].position.x > Screen.width / 2 - 100 && myTouches[i].position.x > Screen.width / 2 + 100)
+                            {
+                                gameController.player1Controller.PowerUp(1);
+                            }
+                            if (myTouches[i].position.x > Screen.width / 3 - 100 && myTouches[i].position.x > Screen.width / 3 + 100)
+                            {
+                                gameController.player1Controller.PowerUp(2);
+                            }
+                            if (myTouches[i].position.x > ((Screen.width / 3) * 2) - 100 && myTouches[i].position.x > ((Screen.width / 3) * 2) + 100)
+                            {
+                                gameController.player1Controller.PowerUp(3);
+                            }
                         }
                         else
                         {
@@ -112,7 +168,8 @@ public class InputControllerMove : MonoBehaviour
                                 {
                                     gameController.player1Controller.MoveLeft();
                                 }
-                            }else if (player2.GetComponent<PlayerController>().oppositeIsActive)
+                            }
+                            else if (player2.GetComponent<PlayerController>().oppositeIsActive)
                             {
                                 if (myTouches[i].position.x > Screen.width / 2)
                                 {
@@ -130,7 +187,18 @@ public class InputControllerMove : MonoBehaviour
                     {
                         if (myTouches[i].position.y > Screen.height - 100)
                         {
-                            gameController.player2Controller.PowerUp(1);
+                            if (myTouches[i].position.x > Screen.width / 2 - 100 && myTouches[i].position.x > Screen.width / 2 + 100)
+                            {
+                                gameController.player2Controller.PowerUp(1);
+                            }
+                            if (myTouches[i].position.x > Screen.width / 3 - 100 && myTouches[i].position.x > Screen.width / 3 + 100)
+                            {
+                                gameController.player2Controller.PowerUp(2);
+                            }
+                            if (myTouches[i].position.x > ((Screen.width / 3) * 2) - 100 && myTouches[i].position.x > ((Screen.width / 3) * 2) + 100)
+                            {
+                                gameController.player2Controller.PowerUp(3);
+                            }
                         }
                         else
                         {
@@ -144,7 +212,8 @@ public class InputControllerMove : MonoBehaviour
                                 {
                                     gameController.player2Controller.MoveLeft();
                                 }
-                            }else if (player1.GetComponent<PlayerController>().oppositeIsActive)
+                            }
+                            else if (player1.GetComponent<PlayerController>().oppositeIsActive)
                             {
                                 if (myTouches[i].position.x > Screen.width / 2)
                                 {

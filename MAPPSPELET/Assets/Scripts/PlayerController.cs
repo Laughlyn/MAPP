@@ -215,6 +215,14 @@ public class PlayerController : MonoBehaviour
         {
             Overcharge();
         }
+        if (powerupNumber == 2)
+        {
+            Shield();
+        }
+        if(powerupNumber == 3)
+        {
+            Opposite();
+        }
     }
 
     public void Overcharge()
