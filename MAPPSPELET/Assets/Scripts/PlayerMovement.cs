@@ -14,12 +14,17 @@ public class PlayerMovement : MonoBehaviour
     private AudioSource source;
     public Sprite damagedSprites;
 
+    public ParticleSystem explosion;
+    public ParticleSystem debris;
+
+    float destroyTimer = 0.0f;
+
     // Use this for initialization
     void Start ()
     {
         health = 3;
         winner = 0;
-	}
+    }
 	
 	// Update is called once per frame
 	void Update ()
@@ -36,10 +41,24 @@ public class PlayerMovement : MonoBehaviour
         }
         if (health < 1)
         {
+            destroyTimer += Time.deltaTime;
             heart1.SetActive(false);
             Debug.Log("DÖÖ");
             GameController.GameControllerInstance.restart.SetActive(true);
             GameController.GameControllerInstance.gameOver = true;
+            if (!explosion.isPlaying)
+            {
+                explosion.Play();
+            }
+            if (!debris.isPlaying)
+            {
+                debris.Play();
+                
+            }
+            if(destroyTimer > 2f)
+            {
+                this.GetComponent<SpriteRenderer>().sprite = null;
+            }
 
             if (this.gameObject.CompareTag("Player1"))
             {

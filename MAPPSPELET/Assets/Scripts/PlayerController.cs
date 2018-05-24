@@ -50,6 +50,7 @@ public class PlayerController : MonoBehaviour
     public Boolean oppositeIsActive;
     public Text oppositeCounter;
 
+    public float roundTimer;
 
     // Use this for initialization
     void Start()
@@ -79,7 +80,8 @@ public class PlayerController : MonoBehaviour
         source = GetComponent<AudioSource>();
 
         //Play sound
-        source.PlayOneShot(shoot);
+        source.pitch = UnityEngine.Random.Range(.3f, .7f);
+        source.PlayOneShot(shoot, 0.7f);
 
         // Destroy the bullet after 5 seconds
         Destroy(bullet, 5.0f);
@@ -105,8 +107,9 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         bulletTimer += Time.deltaTime;
+        roundTimer += Time.deltaTime;
 
-        if (bulletTimer > bulletDelay)
+        if (bulletTimer > bulletDelay && roundTimer > 3f)
         {
             SpawnProjectile();
             bulletTimer = 0f;
@@ -116,7 +119,7 @@ public class PlayerController : MonoBehaviour
         //Stop the ship from going out of bounds
         if(transform.position.x < -distance)
         {
-            transform.position = new Vector3(distance, transform.position.y);
+            transform.position = new Vector3(-distance, transform.position.y);
         }
 
         if (transform.position.x > distance)

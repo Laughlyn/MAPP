@@ -5,6 +5,8 @@ using UnityEngine;
 [System.Serializable]
 public class CubeController: MonoBehaviour
 {
+    public bool chain = true;
+
     public Material material;
     public int hitLimit;
     int hitCounter;
@@ -100,6 +102,7 @@ public class CubeController: MonoBehaviour
                 }
 
                 source = GetComponent<AudioSource>();
+                source.pitch = Random.Range(.3f, .7f);
                 source.PlayOneShot(impact);
                 Destroy(other.gameObject);
             }

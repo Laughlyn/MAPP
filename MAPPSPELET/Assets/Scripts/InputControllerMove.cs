@@ -143,15 +143,15 @@ public class InputControllerMove : MonoBehaviour
                     {
                         if (myTouches[i].position.y < 100)
                         {
-                            if (myTouches[i].position.x > Screen.width / 2 - 100 && myTouches[i].position.x > Screen.width / 2 + 100)
+                            if (myTouches[i].position.x > (Screen.width / 2) - 50 && myTouches[i].position.x < (Screen.width / 2) + 50)
                             {
                                 gameController.player1Controller.PowerUp(1);
                             }
-                            if (myTouches[i].position.x > Screen.width / 3 - 100 && myTouches[i].position.x > Screen.width / 3 + 100)
+                            if (myTouches[i].position.x > (Screen.width / 2) - 175 && myTouches[i].position.x < (Screen.width / 2) - 225)
                             {
                                 gameController.player1Controller.PowerUp(2);
                             }
-                            if (myTouches[i].position.x > ((Screen.width / 3) * 2) - 100 && myTouches[i].position.x > ((Screen.width / 3) * 2) + 100)
+                            if (myTouches[i].position.x > (Screen.width / 2) + 175 && myTouches[i].position.x < (Screen.width / 2) + 225)
                             {
                                 gameController.player1Controller.PowerUp(3);
                             }
@@ -187,15 +187,15 @@ public class InputControllerMove : MonoBehaviour
                     {
                         if (myTouches[i].position.y > Screen.height - 100)
                         {
-                            if (myTouches[i].position.x > Screen.width / 2 - 100 && myTouches[i].position.x > Screen.width / 2 + 100)
+                            if (myTouches[i].position.x > (Screen.width / 2) - 50 && myTouches[i].position.x < (Screen.width / 2) + 50)
                             {
                                 gameController.player2Controller.PowerUp(1);
                             }
-                            if (myTouches[i].position.x > Screen.width / 3 - 100 && myTouches[i].position.x > Screen.width / 3 + 100)
+                            if (myTouches[i].position.x > (Screen.width / 2) - 175 && myTouches[i].position.x < (Screen.width / 2) - 225)
                             {
                                 gameController.player2Controller.PowerUp(2);
                             }
-                            if (myTouches[i].position.x > ((Screen.width / 3) * 2) - 100 && myTouches[i].position.x > ((Screen.width / 3) * 2) + 100)
+                            if (myTouches[i].position.x > (Screen.width / 2) + 175 && myTouches[i].position.x < (Screen.width / 2) + 225)
                             {
                                 gameController.player2Controller.PowerUp(3);
                             }

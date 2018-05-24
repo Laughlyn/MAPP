@@ -29,6 +29,7 @@ public class GameController : MonoBehaviour
     public Sprite player1Sprite;
     public Sprite player2Sprite;
 
+
     // Use this for initialization
     void Start ()
 	{
@@ -54,7 +55,8 @@ public class GameController : MonoBehaviour
         if (player1.GetComponent<PlayerMovement>().winner == 1 || player2.GetComponent<PlayerMovement>().winner == 1)
         {
             player1Pic.SetActive(true);
-        }else if(player1.GetComponent<PlayerMovement>().winner == 2 || player2.GetComponent<PlayerMovement>().winner == 2)
+        }
+        else if(player1.GetComponent<PlayerMovement>().winner == 2 || player2.GetComponent<PlayerMovement>().winner == 2)
         {
             player2Pic.SetActive(true);
         }
@@ -72,13 +74,22 @@ public class GameController : MonoBehaviour
         ResetHealth();
         ResetHearts();
         ResetSprites();
+        ResetParticleSystems();
 
         player1.GetComponent<PlayerMovement>().winner = 0;
         player2.GetComponent<PlayerMovement>().winner = 0;
         player1Pic.SetActive(false);
         player2Pic.SetActive(false);
 
-        
+        player1Controller.roundTimer = 0.0f;
+        player2Controller.roundTimer = 0.0f;
+
+        GameObject[] projectiles = GameObject.FindGameObjectsWithTag("Projectile");
+        foreach (GameObject projectile in projectiles)
+        {
+            GameObject.Destroy(projectile);
+        }
+
         restart.SetActive(false);
         gameOver = false;
     }
@@ -136,5 +147,14 @@ public class GameController : MonoBehaviour
     {
         player1.GetComponent<SpriteRenderer>().sprite = player1Sprite;
         player2.GetComponent<SpriteRenderer>().sprite = player2Sprite;
+    }
+
+    void ResetParticleSystems()
+    {
+        player1.GetComponent<PlayerMovement>().explosion.Stop(false, ParticleSystemStopBehavior.StopEmittingAndClear);
+        player1.GetComponent<PlayerMovement>().debris.Stop(false, ParticleSystemStopBehavior.StopEmittingAndClear);
+
+        player2.GetComponent<PlayerMovement>().explosion.Stop(false, ParticleSystemStopBehavior.StopEmittingAndClear);
+        player2.GetComponent<PlayerMovement>().debris.Stop(false, ParticleSystemStopBehavior.StopEmittingAndClear);
     }
 }
