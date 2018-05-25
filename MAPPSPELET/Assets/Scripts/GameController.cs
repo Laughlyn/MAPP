@@ -75,6 +75,8 @@ public class GameController : MonoBehaviour
         ResetHearts();
         ResetSprites();
         ResetParticleSystems();
+        player1.GetComponent<PlayerMovement>().destroyTimer = 0f;
+        player2.GetComponent<PlayerMovement>().destroyTimer = 0f;
 
         player1.GetComponent<PlayerMovement>().winner = 0;
         player2.GetComponent<PlayerMovement>().winner = 0;
@@ -92,6 +94,14 @@ public class GameController : MonoBehaviour
 
         restart.SetActive(false);
         gameOver = false;
+
+        player1.GetComponent<PlayerController>().overchargeTimer = player1.GetComponent<PlayerController>().overchargeCooldown;
+        player1.GetComponent<PlayerController>().shieldTimer = player1.GetComponent<PlayerController>().shieldCooldown;
+        player1.GetComponent<PlayerController>().oppositeTimer = player1.GetComponent<PlayerController>().oppositeCooldown;
+        player2.GetComponent<PlayerController>().overchargeTimer = player2.GetComponent<PlayerController>().overchargeCooldown;
+        player2.GetComponent<PlayerController>().shieldTimer = player2.GetComponent<PlayerController>().shieldCooldown;
+        player2.GetComponent<PlayerController>().oppositeTimer = player2.GetComponent<PlayerController>().oppositeCooldown;
+
     }
 
     public void BackToMenu()

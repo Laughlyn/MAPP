@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
     public ParticleSystem explosion;
     public ParticleSystem debris;
 
-    float destroyTimer = 0.0f;
+    public float destroyTimer = 0.0f;
 
     // Use this for initialization
     void Start ()
@@ -79,9 +79,11 @@ public class PlayerMovement : MonoBehaviour
         {
                 health -= dmg;
                 damageTimer = 0;
-                
-                StartCoroutine(cameraShake.Shake(.15f, 4f));
 
+            if (this.GetComponent<PlayerController>().shieldTimer > 5.2f)
+            {
+                StartCoroutine(cameraShake.Shake(.15f, 4f));
+            }
                 source = GetComponent<AudioSource>();
 
                 //Play sound

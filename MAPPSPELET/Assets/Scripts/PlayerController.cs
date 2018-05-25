@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
 
     public float bulletDelay;
     public float bulletTimer;
-    float overchargeTimer;
+    public float overchargeTimer;
     public float direction = 0f;
     public GameObject chargeSprites;
     public Text overchargeCounter;
@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
     //shield
     public Button shieldButton;
     public float shieldDuration = 5.0f;
-    float shieldTimer;
+    public float shieldTimer;
     public float shieldCooldown = 10.0f;
     public GameObject shieldSprites;
     public Boolean shieldIsActive;
@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour
     //Opposite control
     public Button oppositeButton;
     public float oppositeDuration = 3.0f;
-    float oppositeTimer;
+    public float oppositeTimer;
     public float oppositeCooldown = 10.0f;
     public GameObject oppositeSprites;
     public Boolean oppositeIsActive;
@@ -111,8 +111,11 @@ public class PlayerController : MonoBehaviour
 
         if (bulletTimer > bulletDelay && roundTimer > 3f)
         {
-            SpawnProjectile();
-            bulletTimer = 0f;
+            if (!GameController.GameControllerInstance.gameOver)
+            {
+                SpawnProjectile();
+                bulletTimer = 0f;
+            }
         }
 
 
@@ -209,6 +212,16 @@ public class PlayerController : MonoBehaviour
                     oppositeCounter.text = (oppositeCooldown - i).ToString();
                 }
             }
+        }
+
+        if (GameController.GameControllerInstance.gameOver)
+        {
+            chargeSprites.SetActive(false);
+            shieldSprites.SetActive(false);
+            oppositeSprites.SetActive(false);
+            overchargeButton.interactable = false;
+            shieldButton.interactable = false;
+            oppositeButton.interactable = false;
         }
     }
 
